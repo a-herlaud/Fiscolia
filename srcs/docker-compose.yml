@@ -74,6 +74,12 @@ services:
         BACK_AUTH_PORT: ${BACK_AUTH_PORT}
     security_opt:
       - label:disable
+    depends_on:
+      db-auth:
+        condition: service_healthy
+      hashi-corp-vault:
+        condition: service_started
+
     networks:
       - fiscolia
     volumes:
@@ -269,6 +275,23 @@ services:
       logstash:
         condition: service_healthy 
     restart: always
+
+
+  hashi-corp-vault:
+    container_name: ${PROJECT_NAME}-vault
+    image: vault-image
+    build:
+      context: ./hashi-corp-vault
+      args:
+        VAULT_PORT: ${VAULT_PORT}
+    ports:
+      - "${VAULT_PORT}:${VAULT_PORT}"
+    cap_add:
+      - IPC_LOCK
+    env_file:
+      - ../.env
+    networks:
+      - fiscolia
 
 
 networks:

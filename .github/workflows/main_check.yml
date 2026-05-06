@@ -50,6 +50,7 @@ jobs:
           echo "PARANOIA=${{ vars.PARANOIA }}" >> .env
           echo "MODSEC_REQ_BODY_LIMIT=${{ vars.MODSEC_REQ_BODY_LIMIT }}" >> .env
 
+          echo "VAULT_PORT"=${{ vars.VAULT_PORT }} >> .env
           echo "VERIFICATION .env FILE CONTENT"
           cat .env
           echo "VERIFICATION secrets FILE CONTENT"
