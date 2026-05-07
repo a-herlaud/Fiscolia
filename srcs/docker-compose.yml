@@ -77,8 +77,8 @@ services:
     depends_on:
       db-auth:
         condition: service_healthy
-      hashi-corp-vault:
-        condition: service_started
+      #hashi-corp-vault:
+      #  condition: service_started
 
     networks:
       - fiscolia
@@ -285,7 +285,7 @@ services:
       args:
         VAULT_PORT: ${VAULT_PORT}
     ports:
-      - "${VAULT_PORT}:${VAULT_PORT}"
+      - ${VAULT_PORT}:${VAULT_PORT}
     cap_add:
       - IPC_LOCK
     env_file:
@@ -312,4 +312,3 @@ secrets:
     file: ../secrets/db_auth_pwd.txt
   db_root_pwd:
     file: ../secrets/db_root_pwd.txt
-
