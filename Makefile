@@ -17,8 +17,6 @@ all :
 
 chatbot:
 	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml --profile chatbot up -d --build ollama
-	@echo "Waiting for ollama to be healthy..."
-	@until [ "$$(docker inspect --format='{{.State.Health.Status}}' $(PROJECT_NAME)-ollama)" = "healthy" ]; do sleep 1; done
 	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml exec -T ollama ollama pull mistral:latest
 	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml exec -T ollama ollama pull nomic-embed-text
 	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml --profile chatbot up -d backend-chatbot
