@@ -52,6 +52,7 @@ jobs:
 
           echo "VAULT_PORT"=${{ vars.VAULT_PORT }} >> .env
           echo "VAULT_ADDR"=${{ vars.VAULT_ADDR }} >> .env
+          echo "VAULT_API_ADDR"=${{ vars.VAULT_API_ADDR }} >> .env
           echo "VERIFICATION .env FILE CONTENT"
           cat .env
           echo "VERIFICATION secrets FILE CONTENT"
