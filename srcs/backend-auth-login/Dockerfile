@@ -4,7 +4,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 RUN apt update
-RUN pip install fastapi uvicorn pydantic email_validator sqlalchemy psycopg2-binary "passlib[bcrypt]" bcrypt==4.0.1 hvac
+RUN pip install fastapi uvicorn pydantic email_validator sqlalchemy psycopg2-binary "passlib[bcrypt]" bcrypt==4.0.1 requests
 
 
 RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu

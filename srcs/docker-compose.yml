@@ -77,13 +77,13 @@ services:
     depends_on:
       db-auth:
         condition: service_healthy
-      hashi-corp-vault:
+      vault:
         condition: service_healthy
+    volumes:
+      - vault_data:/vault/data:ro
 
     networks:
       - fiscolia
-    volumes:
-      - ../models:/models:ro
     env_file:
       - ../.env
     secrets:
@@ -313,12 +313,12 @@ services:
     ports:
       - "${VAULT_PORT}:${VAULT_PORT}"        # Vault UI + API (accessible from host for debugging)
     volumes:
-      - ./vault/config:/vault/config:ro
-      - ./vault/scripts:/vault/scripts:ro
-      - vault_data:/vault/data # persistent encrypted storage
+      - ./vault/config:/vault/config:ro,Z
+      - ./vault/scripts:/vault/scripts:ro,Z
+      - vault_data:/vault/data:Z # persistent encrypted storage
     command: sh /vault/scripts/entrypoint.sh
     healthcheck:
-      test: ["CMD", "sh", "-c", "vault status | grep -q 'Sealed.*false'"]
+      test: ["CMD", "sh", "-c", "vault status -format=json >/dev/null 2>&1 && vault status | grep -q 'Sealed.*false' || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 15
