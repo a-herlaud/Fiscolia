@@ -277,25 +277,55 @@ services:
     restart: always
 
 
-  hashi-corp-vault:
+  #hashi-corp-vault:
+  #  container_name: ${PROJECT_NAME}-vault
+  #  image: vault-image
+  #  build:
+  #    context: ./hashi-corp-vault
+  #    args:
+  #      VAULT_PORT: ${VAULT_PORT}
+  #      VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_DEV_ROOT_TOKEN_ID}
+  #      VAULT_DEV_LISTEN_ADDRESS: ${VAULT_DEV_LISTEN_ADDRESS}
+  #      VAULT_ADDR: ${VAULT_ADDR}
+  #  ports:
+  #    - ${VAULT_PORT}:${VAULT_PORT}
+  #  cap_add:
+  #    - IPC_LOCK
+  #  healthcheck:
+  #    test: ["CMD", "vault", "status"]
+  #    interval: 5s
+  #    timeout: 3s
+  #    retries: 10
+  #  env_file:
+  #    - ../.env
+  #  secrets:
+  #    - db_auth_pwd
+  #    - db_root_pwd
+  #  networks:
+  #    - fiscolia
+
+  vault:
+    image: docker.io/hashicorp/vault:latest
     container_name: ${PROJECT_NAME}-vault
-    image: vault-image
-    build:
-      context: ./hashi-corp-vault
-      args:
-        VAULT_PORT: ${VAULT_PORT}
-        VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_DEV_ROOT_TOKEN_ID}
-        VAULT_DEV_LISTEN_ADDRESS: ${VAULT_DEV_LISTEN_ADDRESS}
-        VAULT_ADDR: ${VAULT_ADDR}
-    ports:
-      - ${VAULT_PORT}:${VAULT_PORT}
+    restart: unless-stopped
     cap_add:
-      - IPC_LOCK
+      - IPC_LOCK           # Required by Vault to lock memory
+    ports:
+      - "8200:8200"        # Vault UI + API (accessible from host for debugging)
+    volumes:
+      - ./vault/config:/vault/config:ro
+      - ./vault/scripts:/vault/scripts:ro
+      - vault_data:/vault/data # persistent encrypted storage
+    environment:
+      VAULT_ADDR: "http://127.0.0.1:8200"
+      PROJECT_NAME: ${PROJECT_NAME} #vault save it encrypted
+    command: sh /vault/scripts/entrypoint.sh
     healthcheck:
-      test: ["CMD", "vault", "status"]
+      test: ["CMD", "sh", "-c", "vault status | grep -q 'Sealed.*false'"]
       interval: 5s
-      timeout: 3s
-      retries: 10
+      timeout: 5s
+      retries: 15
+      start_period: 15s
     env_file:
       - ../.env
     secrets:
@@ -303,7 +333,6 @@ services:
       - db_root_pwd
     networks:
       - fiscolia
-
 
 networks:
   fiscolia:
@@ -313,9 +342,13 @@ networks:
 volumes:
   db_auth:
     driver: local
+<<<<<<< HEAD
   ollama_models:
     driver: local
   elasticsearch_data:
+=======
+  vault_data:
+>>>>>>> 8dba667 (feat(vault-script/config): change `dev mode` to `server mode`)
     driver: local
 
 secrets:
