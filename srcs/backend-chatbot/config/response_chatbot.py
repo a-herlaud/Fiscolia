@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from test import get_agent_answer
-from create_vector_db import run_ingestion
 from contextlib import asynccontextmanager
 
 
@@ -13,7 +12,7 @@ class UserFront(BaseModel):
 async def lifespan(app: FastAPI):
     print("Vérification et ingestion des données...")
     try:
-        run_ingestion()
+        print("test enter lifespan")
         print("Base de données vectorielle prête.")
     except:
         print(f"Erreur lors de l'ingestion")
