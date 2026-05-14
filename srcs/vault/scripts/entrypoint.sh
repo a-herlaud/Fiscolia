@@ -55,9 +55,7 @@ if [ "$SECRETS_EXIST" = "no" ]; then
   vault kv put secret/ports \
     db_port=${DB_AUTH_PORT} \
     backend_port=${BACK_AUTH_PORT}  \
-    upload_port=${BACK_UPLOAD_PORT}\
     front_port=${FRONT_PORT}    \
-    proxy_port=${PROXY_EXPOSED_PORT}
 
 
   echo "==> Secrets written."

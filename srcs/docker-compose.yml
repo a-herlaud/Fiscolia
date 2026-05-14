@@ -79,9 +79,10 @@ services:
         condition: service_healthy
       vault:
         condition: service_healthy
+      logstash:
+        condition: service_healthy
     volumes:
       - vault_data:/vault/data:ro
-
     networks:
       - fiscolia
     env_file:
@@ -305,8 +306,12 @@ services:
   #    - fiscolia
 
   vault:
-    image: docker.io/hashicorp/vault:latest
+    image: vault-image
     container_name: ${PROJECT_NAME}-vault
+    build:
+      context: ./vault
+      args:
+        VAULT_PORT: ${VAULT_PORT}
     restart: unless-stopped
     user: "0:0"
     cap_add:
@@ -317,7 +322,6 @@ services:
       - ./vault/config:/vault/config:ro,Z
       - ./vault/scripts:/vault/scripts:ro,Z
       - vault_data:/vault/data:Z # persistent encrypted storage
-    command: sh /vault/scripts/entrypoint.sh
     healthcheck:
       test: ["CMD", "sh", "-c", "vault status -format=json >/dev/null 2>&1 && vault status | grep -q 'Sealed.*false' || exit 1"]
       interval: 5s
@@ -340,13 +344,10 @@ networks:
 volumes:
   db_auth:
     driver: local
-<<<<<<< HEAD
   ollama_models:
     driver: local
   elasticsearch_data:
-=======
   vault_data:
->>>>>>> 8dba667 (feat(vault-script/config): change `dev mode` to `server mode`)
     driver: local
 
 secrets:
