@@ -10,9 +10,9 @@ OLLAMA_BASE_URL = "http://ollama:11434"
 PERSIST_DIR = "./ma_base_chroma"
 OLLAMA_EMBED_MODEL = "nomic-embed-text"
 
+client_ollama = ollama.Client(OLLAMA_BASE_URL)
 
 def get_agent_answer(user_question):
-	client_ollama = ollama.Client(OLLAMA_BASE_URL)
 
 	embeddings_model = OllamaEmbeddings(
 		model=OLLAMA_EMBED_MODEL,
@@ -43,12 +43,5 @@ def get_agent_answer(user_question):
 	{user_question}
 
 	RÉPONSE :"""
-
-	# 5. Envoyer à Mistral
-	reponse = client_ollama.chat(
-		model=OLLAMA_CHAT_MODEL,
-		messages=[{"role": "user", "content": prompt}],
-		keep_alive="15m"  # Garde le modèle en mémoire pendant 5 minutes
-	)
-	print(reponse["message"]["content"])
-	return (reponse["message"]["content"])
+	
+	return (prompt)

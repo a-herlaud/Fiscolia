@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket
 from pydantic import BaseModel
-from test import get_agent_answer
+from test import get_agent_answer, OLLAMA_CHAT_MODEL, client_ollama
 from contextlib import asynccontextmanager
+from starlette.websockets import WebSocketDisconnect
 
 
 class UserFront(BaseModel):
@@ -21,10 +22,32 @@ async def lifespan(app: FastAPI):
 # On passe le lifespan à l'app
 app = FastAPI(lifespan=lifespan)
 
-@app.post("/api/chatbot")
-def response_chatbot(data : UserFront):
-    try:
-        answer = get_agent_answer(data.question)
-        return {"message": f"{answer}"}
-    except :
-        return {"message": f"Error on AI backend"}
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    try :
+        while True:
+            data = await websocket.receive_text()
+            try:
+                prompt = get_agent_answer(data)
+
+                answer = client_ollama.chat(
+                	model=OLLAMA_CHAT_MODEL,
+                	messages=[{"role": "user", "content": prompt}],
+                	keep_alive="15m",  # Garde le modèle en mémoire pendant 5 minutes
+                	stream=True, 
+                )
+
+                for elem in answer:
+                    chunk = elem["message"]["content"]
+                    # Send character by character with a small delay
+                    for char in chunk:
+                        await websocket.send_text(char)
+                        # Optional: small delay for more natural flow
+                        # import asyncio
+                        # await asyncio.sleep(0.01)  # 10ms between chars
+                await websocket.send_text("Done !")
+            except :
+                return {"message": f"Error on AI backend"}
+    except WebSocketDisconnect:
+        print("Client disconnected") 
