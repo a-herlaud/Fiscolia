@@ -99,7 +99,7 @@ export default function UserSession() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "3rem" }}>
-      <h1 style={{ color: "#000091" }}>Welcome {user.email}</h1>
+      <h1 style={{ color: "#818cf8" }}>Welcome {user.email}</h1>
       <p style={{ marginBottom: "2rem", fontSize: "1.1rem" }}>You are authenticated ✓</p>
 
       <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginBottom: "2rem" }}>
@@ -109,12 +109,15 @@ export default function UserSession() {
           style={{
             padding: "0.75rem 1.5rem",
             fontSize: "1rem",
-            backgroundColor: "#198754",
+            backgroundColor: "#10b981",
             color: "white",
             border: "none",
             borderRadius: "4px",
             cursor: "pointer",
+            transition: "background-color 0.2s",
           }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = "#059669"}
+          onMouseLeave={(e) => e.target.style.backgroundColor = "#10b981"}
         >
           Edit profile
         </button>
@@ -125,12 +128,15 @@ export default function UserSession() {
           style={{
             padding: "0.75rem 1.5rem",
             fontSize: "1rem",
-            backgroundColor: "#000091",
+            backgroundColor: "#818cf8",
             color: "white",
             border: "none",
             borderRadius: "4px",
             cursor: "pointer",
+            transition: "background-color 0.2s",
           }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = "#6366f1"}
+          onMouseLeave={(e) => e.target.style.backgroundColor = "#818cf8"}
         >
           Upload File
         </button>
@@ -141,12 +147,15 @@ export default function UserSession() {
           style={{
             padding: "0.75rem 1.5rem",
             fontSize: "1rem",
-            backgroundColor: "#dc3545",
+            backgroundColor: "#ef4444",
             color: "white",
             border: "none",
             borderRadius: "4px",
             cursor: "pointer",
+            transition: "background-color 0.2s",
           }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = "#dc2626"}
+          onMouseLeave={(e) => e.target.style.backgroundColor = "#ef4444"}
         >
           Logout
         </button>

@@ -38,8 +38,7 @@ def register(data: UserRegister, db: Session = Depends(get_db)):
             return {"status": "error", "message": error}
         hashed_pwd = hash_password(data.password)
 
-        new_user = UserDB(email=data.email, password=hashed_pwd, firstname=data.firstname ,lastname=data.lastname,
-                          etat_civil=1, quotient_familial=1, situation_specifique=2, rni=22000000, csp=4)
+        new_user = UserDB(email=data.email, password=hashed_pwd, firstname=data.firstname ,lastname=data.lastname)
         db.add(new_user)
         db.commit()
         db.refresh(new_user)
@@ -72,19 +71,26 @@ def login(data: UserLogin, response: Response, db: Session = Depends(get_db)):
     session_id = create_session(db, user.id, data={"email": user.email}, ttl_seconds=7 * 24 * 3600)
     response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax", max_age=7 * 24 * 3600)
 
+    if not user.data:
+        return {
+            "message": f"Bienvenue {user.email}, votre compte est connecté mais votre profil n'est pas encore renseigné.",
+            "profile_complete": False,
+        }
+
     user_data = {
-        "index":				user.id,
-		"etat_civil":           user.etat_civil,
-		"quotient_familial":    user.quotient_familial,
-		"situation_specifique":  user.situation_specifique,
-		"rni":                  user.rni,
-		"csp":                  user.csp,
-        
+        "index": user.data.id,
+        "etat_civil": user.data.etat_civil,
+        "quotient_familial": user.data.quotient_familial,
+        "situation_specifique": user.data.situation_specifique,
+        "rni": user.data.rni,
+        "csp": user.data.csp,
 	}
     profil = predict_profile(user_data)
-    print("DEBUG")
     print(profil)
-    return {"message": f"Bienvenue {user.email}, vous appartenez au groupe {profil}"}
+    return {
+        "message": f"Bienvenue {user.email}, vous appartenez au groupe {profil}",
+        "profile_complete": True,
+    }
 
 
 @auth.post("/api/auth-logout")
@@ -108,20 +114,16 @@ def get_me(current_user: UserDB = Depends(get_current_user), response: Response 
         "email": current_user.email,
         "firstname": current_user.firstname,
         "lastname": current_user.lastname,
-        "etat_civil": current_user.etat_civil,
-        "rni": current_user.rni,
-		"csp": current_user.csp,
-        "quotient_familial": current_user.quotient_familial,
-		"situation_specifique": current_user.situation_specifique
     }
 
 
 @auth.post("/api/edit-profile")
-def edit_profile(data: UserData, db: Session = Depends(get_db)):
+def edit_profile(data: UserData, current_user: UserDB = Depends(get_current_user),
+                 db: Session = Depends(get_db)):
     if data:
         new_data = UserDataDB(etat_civil=data.etat_civil, quotient_familial=data.quotient_familial,
                             situation_specifique=data.situation_specifique,
-                            rni=data.rni, csp=data.csp)
+                            rni=data.rni, csp=data.csp, user_id=current_user.id)
         db.add(new_data)
         db.commit()
         db.refresh(new_data)

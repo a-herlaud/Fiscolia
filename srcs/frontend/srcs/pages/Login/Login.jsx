@@ -45,7 +45,7 @@ function Login() {
 
   return (
     <div style={{ textAlign: "center", alignContent: "center" }}>
-      <h1 style={{ color:"#000091"}}>LOGIN</h1>
+      <h1 style={{ color:"#818cf8"}}>LOGIN</h1>
       <form onSubmit={handleSubmit}>
         <p>Email</p>
         <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />

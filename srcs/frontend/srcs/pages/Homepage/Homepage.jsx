@@ -6,7 +6,7 @@ function Home() {
 	return (
 	<div>
 		<p>Un projet, une vision</p>
-		<h1 style={{ color: '#000091', fontFamily: 'montserat'}}>Fiscolia</h1>
+		<h1 style={{ color: '#818cf8', fontFamily: 'montserat'}}>Fiscolia</h1>
 	
 	<div>
 		<Link to="/backend">

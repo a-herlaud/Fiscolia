@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 
 #Libraries
 from sqlalchemy.dialects.postgresql import JSONB
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from sqlalchemy.orm import sessionmaker, DeclarativeBase, relationship
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text, ForeignKey, Index, func
 from fastapi import FastAPI, Depends
 from uuid import uuid4
@@ -47,11 +47,7 @@ class UserDB(Base):
     password = Column(String)
     firstname = Column(String)
     lastname = Column(String)
-    etat_civil = Column(Integer)
-    quotient_familial = Column(Integer)
-    situation_specifique = Column(Integer)
-    rni = Column(Integer)
-    csp = Column(Integer)
+    data = relationship("UserDataDB", back_populates="user", uselist=False)
 
 class UserDataDB(Base):
     __tablename__ = "userdata"
@@ -62,6 +58,8 @@ class UserDataDB(Base):
     situation_specifique = Column(String)
     rni = Column(String)
     csp = Column(String)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True)
+    user = relationship("UserDB", back_populates="data")
 
 class SessionDB(Base):
     __tablename__ = "sessions"
