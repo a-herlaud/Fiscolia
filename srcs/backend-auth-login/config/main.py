@@ -6,10 +6,17 @@ from fastapi import HTTPException, Depends, Response, Cookie
 from datetime import datetime, timedelta
 
 # Local Files
-from connect_db import UserDB, get_db, auth
+from connect_db import UserDB, get_db, auth, UserDataDB
 from security import verify_password, hash_password, check_password
 from session_store import create_session, get_session, delete_session
 
+
+class UserData(BaseModel):
+    etat_civil: str
+    quotient_familial: str
+    situation_specifique: str
+    rni: str
+    csp: str
 
 class UserRegister(BaseModel):
     email: EmailStr
@@ -86,6 +93,19 @@ def get_me(current_user: UserDB = Depends(get_current_user), response: Response 
         "firstname": current_user.firstname,
         "lastname": current_user.lastname
     }
+
+
+@auth.post("/api/edit-profile")
+def edit_profile(data: UserData, db: Session = Depends(get_db)):
+    if data:
+        new_data = UserDataDB(etat_civil=data.etat_civil, quotient_familial=data.quotient_familial,
+                            situation_specifique=data.situation_specifique,
+                            rni=data.rni, csp=data.csp)
+        db.add(new_data)
+        db.commit()
+        db.refresh(new_data)
+        return {"message": "Thank you, your data has been used for ML"}
+    
 
 # backend-auth/
 # ├── app/

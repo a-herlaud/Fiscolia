@@ -48,6 +48,16 @@ class UserDB(Base):
     firstname = Column(String)
     lastname = Column(String)
 
+class UserDataDB(Base):
+    __tablename__ = "userdata"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    etat_civil = Column(String)
+    quotient_familial = Column(String) 
+    situation_specifique = Column(String)
+    rni = Column(String)
+    csp = Column(String)
+
 class SessionDB(Base):
     __tablename__ = "sessions"
 
