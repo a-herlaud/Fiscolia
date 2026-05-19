@@ -117,17 +117,29 @@ def get_me(current_user: UserDB = Depends(get_current_user), response: Response 
     }
 
 
+def get_current_user_optional(session_id: Optional[str] = Cookie(None), db: Session = Depends(get_db)):
+    if not session_id:
+        return None
+    session = get_session(db, session_id)
+    if not session:
+        return None
+    user = db.query(UserDB).filter(UserDB.id == session.user_id).first()
+    return user
+
 @auth.post("/api/edit-profile")
-def edit_profile(data: UserData, current_user: UserDB = Depends(get_current_user),
-                 db: Session = Depends(get_db)):
-    if data:
-        new_data = UserDataDB(etat_civil=data.etat_civil, quotient_familial=data.quotient_familial,
-                            situation_specifique=data.situation_specifique,
-                            rni=data.rni, csp=data.csp, user_id=current_user.id)
-        db.add(new_data)
-        db.commit()
-        db.refresh(new_data)
-        return {"message": "Thank you, your data has been used for ML"}
+def edit_profile(data: UserData, current_user: Optional[UserDB] = Depends(get_current_user_optional), db: Session = Depends(get_db)):
+    new_data = UserDataDB(
+        etat_civil=data.etat_civil,
+        quotient_familial=data.quotient_familial,
+        situation_specifique=data.situation_specifique,
+        rni=data.rni,
+        csp=data.csp,
+        user_id=current_user.id if current_user else None
+    )
+    db.add(new_data)
+    db.commit()
+    db.refresh(new_data)
+    return {"message": "Thank you, your data has been used for ML"}
     
 
 # backend-auth/

@@ -58,7 +58,7 @@ class UserDataDB(Base):
     situation_specifique = Column(String)
     rni = Column(String)
     csp = Column(String)
-    user_id = Column(Integer, ForeignKey("users.id"), unique=True)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True, nullable=True)
     user = relationship("UserDB", back_populates="data")
 
 class SessionDB(Base):
