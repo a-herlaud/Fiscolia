@@ -89,6 +89,21 @@ services:
   #     - ../.env
   #   restart: unless-stopped
 
+  create-profile:
+    container_name: ${PROJECT_NAME}-create-profile
+    image: create-profile-image
+    build:
+      context: ../scripts/create_profile
+    depends_on:
+      backend-auth:
+        condition: service_started
+    networks:
+      - fiscolia
+    env_file:
+      - ../.env
+    profiles:
+      - profile
+
 networks:
   fiscolia:
     name: fiscolia-network

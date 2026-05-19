@@ -58,6 +58,9 @@ env_check:
 create_users:
 	@python3 scripts/create_user/create_user.py	
 
+create_profiles:
+	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml run --rm create-profile
+
 container_check:
 	@PROJECT_NAME=$(PROJECT_NAME) python3 ./scripts/container_checker.py
 
