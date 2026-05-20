@@ -27,6 +27,7 @@
 
 .header {
 
+  position: relative;
   width: 100%;
   height: clamp(80px, 9vh, 150px);
   background: white;
@@ -46,7 +47,7 @@
   height: 100%;
   align-items: center;
   text-decoration: none;
-  
+
 }
 
 .header-logo {
@@ -59,6 +60,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 4;
 
 }
 
@@ -73,6 +75,7 @@
   align-items: center;
 
   opacity: 0;
+  z-index: 4;
   transform: translateX( -120% );
 
   animation: headerLogo 1s ease forwards;
@@ -93,6 +96,82 @@
 
 }
 
+.burger-menu-button {
+
+  width: clamp( 15px, 4vw, 30px );
+  height: clamp( 20px, 4vw, 30px );
+
+  background: transparent;
+  color: black;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  gap: 6px;
+  z-index: 2;
+
+  cursor: pointer;
+  padding: 0;
+
+}
+
+.burger-menu-button span {
+
+  width: 100%;
+  height: clamp( 5px, 5vw, 5px );
+
+  background-color: #05337c;
+  border-radius: 10px;
+  display: block;
+
+}
+
+.burger-menu {
+
+  position: fixed;
+
+  top:   clamp( -180px, -20vw, -80px );
+  right: clamp( -180px, -20vw, -80px );
+
+  width: clamp(  30px, 55vw, 400px );
+  height: clamp( 30px, 55vw, 400px );
+  padding-top:  clamp( 60px, 12vw, 120px );
+  padding-left: clamp( 50px, 30vw, 170px );
+
+  border-radius: 50%;
+
+  background: #f8875d;/*#05337c;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp( 10px, 2vw, 20px );
+
+  z-index: 1;
+
+}
+
+.burger-menu.open {
+  transform: scale(1);
+}
+
+.burger-menu a {
+  
+  color: black;
+  text-decoration: none;
+  font-size: clamp( 12px, 4vw, 21px );
+
+}
+
+.burger-menu a:hover {
+
+  color: #c04416;
+  transform: scale( 1.1 );
+
+}
+
 .footer {
 
   width: 100%;
@@ -107,6 +186,8 @@
   box-sizing: border-box;
   padding-left: clamp( 8px, 1vw, 20px );
   padding-right: clamp( 8px, 1vw, 20px );
+
+  z-index: 5;
 
 }
 
@@ -123,10 +204,26 @@
 
 }
 
+.github-logo:hover {
+
+  transform: scale( 1.1 );
+
+}
+
 .terms-and-policies {
 
   color: #74777a;
   font-size: clamp( 10px, 1.5vw, 24px );
+  text-decoration: none;
+
+}
+
+.terms-and-policies:hover {
+
+  color: #000091;
+  transform: scale( 1.1 );
+  text-decoration: none;
+
 }
 
 :root {
