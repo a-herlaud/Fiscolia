@@ -10,6 +10,8 @@ import EditProfile from './pages/EditProfile/EditProfile.jsx';
 import Upload from './pages/Upload/Upload.jsx';
 import UserSession from './pages/UserSession/UserSession.jsx';
 import Chatbot from './pages/Chatbot/Chatbot.jsx';
+import PrivacyPolicy from './pages/TermsAndPolicies/PrivacyPolicy.jsx'
+import TermsOfService from './pages/TermsAndPolicies/TermsOfService.jsx'
 
 function App() {
 	return (
@@ -19,14 +21,14 @@ function App() {
       <Route path="/backend" element={<Test_back_end />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/edit-profile" element={<EditProfile />} />
-	  <Route path="/upload" element={<Upload />} />
-	  <Route path="/session" element={<UserSession />} />
-	  <Route path="/chatbot" element={<Chatbot />} />
+	    <Route path="/upload" element={<Upload />} />
+	    <Route path="/session" element={<UserSession />} />
+      <Route path="/privacy_policy" element={<PrivacyPolicy />} />
+      <Route path="/terms_of_service" element={<TermsOfService />} />
+      <Route path="/chatbot" element={<Chatbot />} />
     </Routes>
   </BrowserRouter>
 	)
 }
-
 
 export default App;
