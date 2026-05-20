@@ -13,6 +13,10 @@ def create_session(db: Session, user_id: int, data: Optional[Dict[str, Any]] = N
     # now = datetime.utcnow()
     now = datetime.now(timezone.utc)
     expires = now + timedelta(seconds=ttl_seconds)
+    existing_session = db.query(SessionDB).filter(SessionDB.user_id == user_id).first()
+    if existing_session:
+        db.delete(existing_session)
+        db.flush()
     row = SessionDB(id=session_id, user_id=user_id, data=data, expires_at=expires, created_at=now)
     db.add(row)
     db.commit()

@@ -65,11 +65,11 @@ class SessionDB(Base):
     __tablename__ = "sessions"
 
     id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True, nullable=False)
     data = Column(JSONB, nullable=True)  # JSONB allows to construct a binary JSON (slower on writing but way faster for reading)
     expires_at = Column(DateTime(timezone=True), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now()) # func.now() is translated by ORM to SQL -> NOW() :
-    																		# it garantees that only the DB server is involved in the timing and not python app server
+   # it garantees that only the DB server is involved in the timing and not python app server
 
     # Index composite pour les lookups rapides
     __table_args__ = (

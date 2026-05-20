@@ -6,7 +6,7 @@ from fastapi import HTTPException, Depends, Response, Cookie
 from datetime import datetime, timedelta
 
 # Local Files
-from connect_db import UserDB, get_db, auth, UserDataDB
+from connect_db import UserDB, get_db, auth, UserDataDB, SessionDB
 from security import verify_password, hash_password, check_password
 from session_store import create_session, get_session, delete_session
 
@@ -63,14 +63,26 @@ def get_current_user(session_id: Optional[str] = Cookie(None), db: Session = Dep
 
 
 @auth.post("/api/auth-login")
-def login(data: UserLogin, response: Response, db: Session = Depends(get_db)):
+def login(data: UserLogin, response: Response, db: Session = Depends(get_db), session_id: Optional[str] = Cookie(None)):
     user = db.query(UserDB).filter(UserDB.email == data.email).first()
     if not user or not verify_password(data.password, user.password):
         raise HTTPException(status_code=400, detail="Email or password incorrect")
     # create session (7 days)
-    session_id = create_session(db, user.id, data={"email": user.email}, ttl_seconds=7 * 24 * 3600)
-    response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax", max_age=7 * 24 * 3600)
-
+    
+	# on veut verifier si l'user possede deja une session 
+    existing_session = None # par defaut
+    if session_id:
+        existing_session = db.query(SessionDB).filter(SessionDB.id == session_id).first()
+    if existing_session and existing_session.user_id == user.id:
+        # Le cookie correspond au bon user
+        print(f"User {user.email} already has a valid session.")
+        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax", max_age=7 * 24 * 3600)
+    else:
+        # Soit pas de cookie, soit le cookie appartenait a un AUTRE user (ou session expirée)
+        # On doit creer une nouvelle session propre pour cet user
+        session_id = create_session(db, user.id, data={"email": user.email}, ttl_seconds=7 * 24 * 3600)
+        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax", max_age=7 * 24 * 3600)
+        
     if not user.data:
         return {
             "message": f"Bienvenue {user.email}, votre compte est connecté mais votre profil n'est pas encore renseigné.",
