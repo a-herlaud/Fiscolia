@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Header, Footer } from '../../Components_of_site.jsx'
+import style from './Login.module.css';
 import '../../index.css'
 
 function Login() {
@@ -20,7 +21,8 @@ function Login() {
 export default Login
 
 const MainBody = () => {
-    const navigate = useNavigate();
+
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
@@ -73,22 +75,30 @@ const MainBody = () => {
       setMessage("ERROR: " + error.message);
     }
   };
+
   return (
-    <div style={{ textAlign: "center", alignContent: "center" }}>
-      <h1 style={{ color:"#818cf8"}}>LOGIN</h1>
-      <form onSubmit={handleSubmit}>
-        <p>Email</p>
-        <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-        <p>Mot de passe</p>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-		    <p>{message}</p>
-        <button type="submit">Connect</button>
+    <div className="main-body-style">
+      <form className={style.login_form} onSubmit={handleSubmit}>
+        <h1 className="auth-page-title">LOGIN</h1>
+        <div className="auth-field-container">
+          <p className="auth-field-name">Email</p>
+          <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+        </div>
+        <div className="auth-field-container">
+          <p className="auth-field-name">Mot de passe</p>
+          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+        </div>
+		    <div>
+          <p className="auth-error-message">{message}</p>
+          <button className="auth-button" type="submit">Connect</button>
+        </div>
       </form>
       <div>
         <Link to="/">
-          <button>Return to the home Page</button>
+          <button className="auth-button">Return to the home Page</button>
         </Link>
       </div>
     </div>
   )
+  
 }
