@@ -6,6 +6,7 @@ import Home from './pages/Homepage/Homepage.jsx';
 import Test_back_end from './pages/Test_back_end';
 import Login from './pages/Login/Login.jsx';
 import Register from './pages/Register/Register.jsx';
+import RegisterSuccess from './pages/Register/RegisterSuccess.jsx';
 import EditProfile from './pages/EditProfile/EditProfile.jsx';
 import Upload from './pages/Upload/Upload.jsx';
 import UserSession from './pages/UserSession/UserSession.jsx';
@@ -32,6 +33,7 @@ function App() {
             <Route path="/privacy_policy" element={<PrivacyPolicy />} />
             <Route path="/terms_of_service" element={<TermsOfService />} />
             <Route path="/chatbot" element={<Chatbot />} />
+            <Route path="/register-success" element={<RegisterSuccess />} />
           </Routes>
         </div>
 
