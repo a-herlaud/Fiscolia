@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 function Login() {
@@ -9,6 +10,20 @@ function Login() {
     email: "",
     password: "",
   });
+  
+  useEffect(() => {
+    const checkSession = async () => {
+      const res = await fetch("/api/me", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (res.ok) {
+        navigate("/session");
+      } 
+  };
+    checkSession();
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
