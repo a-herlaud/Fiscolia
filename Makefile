@@ -1,4 +1,5 @@
 PROJECT_NAME=fiscolia
+RAG_DATABASE_PATH=./srcs/backend-chatbot/config/ma_base_chroma
 
 # Couleurs
 GREEN  = \033[0;32m
@@ -17,14 +18,24 @@ all :
 
 
 clean:
-	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml down
+	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml --profile chatbot down
 
 fclean:
-	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml down -v --rmi all
+	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml --profile chatbot down -v --rmi all
 
 re: clean all
 
 
+# TRAINING
+
+training: env_check
+	@echo "$(CYAN)── Building training image ──$(RESET)"
+	@mkdir -p $(PWD)/models
+	@echo "$(CYAN)── Lancement de l'entraînement ──$(RESET)"
+	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml run --rm training
+	@echo "$(CYAN)── Training container started in detached mode ──$(RESET)"
+	@echo "$(CYAN)Access with: docker compose -p $(PROJECT_NAME) -f srcs/docker-compose.yml exec training bash$(RESET)"
+	@docker image rm -f fiscolia-training || true
 # ADR
 
 adr:
@@ -40,6 +51,19 @@ env_check:
 
 create_users:
 	@python3 scripts/create_user/create_user.py	
+
+vector_db: env_check
+# 	@mkdir -p $(PWD)/models/ollama
+	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml up -d --build ollama
+	docker build -t vector-db ./scripts/create_vector_db
+	docker run --name vector-db-container --network fiscolia-network -v $(RAG_DATABASE_PATH):/app/ma_base_chroma vector-db
+	docker stop vector-db-container
+	docker rm vector-db-container
+	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml down ollama
+
+create_profiles: env_check
+	docker compose --profile profile -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml run --rm create-profile
+	@docker image rm -f create-profile-image || true
 
 container_check:
 	@PROJECT_NAME=$(PROJECT_NAME) python3 ./scripts/container_checker.py

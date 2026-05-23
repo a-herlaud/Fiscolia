@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 function Login() {
@@ -9,6 +10,20 @@ function Login() {
     email: "",
     password: "",
   });
+  
+  useEffect(() => {
+    const checkSession = async () => {
+      const res = await fetch("/api/me", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (res.ok) {
+        navigate("/session");
+      } 
+  };
+    checkSession();
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +52,7 @@ function Login() {
       setMessage(data.message);
       
       // Redirect to UserSession dashboard after successful login
-      setTimeout(() => navigate("/session"), 500);
+      setTimeout(() => navigate("/session"), 5000);
     } catch (error) {
       setMessage("ERROR: " + error.message);
     }
@@ -45,7 +60,7 @@ function Login() {
 
   return (
     <div style={{ textAlign: "center", alignContent: "center" }}>
-      <h1 style={{ color:"#000091"}}>LOGIN</h1>
+      <h1 style={{ color:"#818cf8"}}>LOGIN</h1>
       <form onSubmit={handleSubmit}>
         <p>Email</p>
         <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />

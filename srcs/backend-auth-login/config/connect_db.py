@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 
 #Libraries
 from sqlalchemy.dialects.postgresql import JSONB
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from sqlalchemy.orm import sessionmaker, DeclarativeBase, relationship
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text, ForeignKey, Index, func
 from fastapi import FastAPI, Depends
 from uuid import uuid4
@@ -47,16 +47,30 @@ class UserDB(Base):
     password = Column(String)
     firstname = Column(String)
     lastname = Column(String)
+    data = relationship("UserDataDB", back_populates="user", uselist=False)
+
+class UserDataDB(Base):
+    __tablename__ = "userdata"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    etat_civil = Column(String)
+    quotient_familial = Column(String) 
+    situation_specifique = Column(String)
+    rni = Column(String)
+    csp = Column(String)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True, nullable=True)
+    user = relationship("UserDB", back_populates="data")
+    profile = Column(Integer, nullable=True)
 
 class SessionDB(Base):
     __tablename__ = "sessions"
 
     id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True, nullable=False)
     data = Column(JSONB, nullable=True)  # JSONB allows to construct a binary JSON (slower on writing but way faster for reading)
     expires_at = Column(DateTime(timezone=True), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now()) # func.now() is translated by ORM to SQL -> NOW() :
-    																		# it garantees that only the DB server is involved in the timing and not python app server
+   # it garantees that only the DB server is involved in the timing and not python app server
 
     # Index composite pour les lookups rapides
     __table_args__ = (
