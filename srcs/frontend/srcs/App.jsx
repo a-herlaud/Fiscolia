@@ -33,7 +33,10 @@ function App() {
 	  <BrowserRouter>
 		  <div className="page">
 
-        <Header isAuthenticated={isAuthenticated}/>
+        <Header 
+            isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+        />
 
         <div className="default-background">
           <Routes>
@@ -44,7 +47,9 @@ function App() {
             />} />
             <Route path="/register" element={<Register />} />
   	        <Route path="/upload" element={<Upload />} />
-  	        <Route path="/session" element={<UserSession />} />
+  	        <Route path="/session" element={<UserSession 
+              setIsAuthenticated={setIsAuthenticated}
+            />} />
             <Route path="/privacy_policy" element={<PrivacyPolicy />} />
             <Route path="/terms_of_service" element={<TermsOfService />} />
             <Route path="/chatbot" element={<Chatbot />} />
