@@ -26,10 +26,7 @@ function Home() {
 				</div>
 			</div>
 
-			<br />
-			<br />
-			<br />
-			<br />
+			
 
 			<div className="home-block">
 				<div className="photo-home-block">
@@ -41,10 +38,7 @@ function Home() {
 				</div>
 			</div>
 
-			<br />
-			<br />
-			<br />
-			<br />
+			
 
 			<div className="home-block">
 				<div className="photo-home-block">
@@ -59,10 +53,7 @@ function Home() {
 				</div>
 			</div>
 
-			<br />
-			<br />
-			<br />
-			<br />
+			
 
 			<div className="home-block">
 				<div className="photo-home-block">
@@ -74,10 +65,6 @@ function Home() {
 				</div>
 			</div>
 			
-			<br />
-			<br />
-			<br />
-			<br />
 
 			<div className="home-block">
 				<div className="photo-home-block">
@@ -88,6 +75,7 @@ function Home() {
 					<p className="homepage-p">Cliquez sur le menu et sélectionnez de s'inscrire ou de se connecter</p>
 				</div>
 			</div>
+
 			<div className="home-block">
 				<div className="photo-home-block">
 					<img src={img_modify_profil} alt="modify_profil_page" />
@@ -98,41 +86,29 @@ function Home() {
 				</div>
 			</div>
 
-			<br />
-			<br />
 
 
-			<div className="home-block">
-				<div className="text-home-block">
+
+			<div className="link-block">
 					<h2 className="homepage-h2">Les articles intéressants à lire</h2>
-				</div>
 			</div>
-			<div className="home-block">
-				<div className="link-home-block">
+			<div className="link-block">
+				<div className="link-article">
 					<a href="https://www.impots.gouv.fr/toutes-les-questions/particulier/puis-je-declarer-en-ligne-pour-ma-premiere-declaration-de-revenus" className="homepage-p">
 						Puis-je déclarer en ligne pour ma première déclaration de revenus ?
 					</a>
 				</div>
-				<div className="link-home-block">
+				<div className="link-article">
 					<a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F359" className="homepage-p">
 						Quelle est la date limite pour faire sa déclaration de revenus pour les impôts ?
 					</a>
 				</div>
-				<div className="link-home-block">
+				<div className="link-article">
 					<a href="https://www.lemonde.fr/idees/article/2024/03/29/impots-le-combat-pour-une-fiscalite-juste-depasse-la-seule-dimension-economique_6224884_3232.html" className="homepage-p">
 						Impôts : « Le combat pour une fiscalité juste dépasse la seule dimension économique »
 					</a>
 				</div>
 			</div>
-
-			{/*<div className="intro-logo-homepage">
-				<img src={img_logo} alt="logo" className="intro-logo-homepage-animation" />
-			</div>*/}
-			{/*<p>Un projet, une vision</p>*/}
-			{/*<p>Capture d'ecran</p>
-			<br />
-			<p>du menu</p>
-			<h1>Fiscolia</h1>*/}
 		</div>			
 	)
 

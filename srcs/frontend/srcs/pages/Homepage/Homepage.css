@@ -38,14 +38,19 @@
 
 .homepage-body {
 
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 
-  margin-top: 10px;
+  /*margin-top: 10px;*/
 
   overflow-y: auto;
+  overflow-x: hidden;
 
 }
 
@@ -75,12 +80,18 @@
 
   margin-top: 2rem;
   margin-bottom: 2rem;
-  margin-left: 60px;
+
+
+  width: clamp( 10px, 100vw, 1000px );
+  height: auto;
+
+  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 60px;
+  gap: 50px;
+  box-sizing: border-box;
 
 }
 
@@ -107,6 +118,7 @@
 
   width:  clamp( 30px, 40vw, 300px );
   height: clamp( 14px, 30vw, 200px );
+
   display: block;
 
 }
@@ -117,24 +129,46 @@
   text-align: left;
 }
 
-.link-home-block {
+.link-block {
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  /*padding: 0 20px;*/
+  box-sizing: border-box;
+
+}
+
+.link-article {
 
   background-color: var( --color-gray );
   border: 2px solid var( --color-black );
-  width: 300px;
-  height: 150px;
+  width: clamp( 100px, 50vw, 400px );
+  height: clamp( 100px, 25vw, 150px );
   display: flex;
+  text-align: center;
   justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 
 }
 
-.link-home-block * {
+.link-article a {
 
+  margin: 0;
   text-decoration: none;
+  font-size: clamp( 14px, 2vw, 30px );
 
 }
 
-.link-home-block:hover {
+.link-article:hover {
 
   transform: translateY(-3px); 
 
@@ -142,7 +176,7 @@
 
 .homepage-h2 {
 
-  font-size: clamp(0.9rem, 3vw, 2rem);
+  font-size: clamp(0.9rem, 3vw, 1.9rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-black)
@@ -152,7 +186,7 @@
 .homepage-p {
 
   color: var(--color-black);
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   margin: 0;
   margin-top: 30px;
 
