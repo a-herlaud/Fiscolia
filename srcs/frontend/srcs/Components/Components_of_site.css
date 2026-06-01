@@ -29,6 +29,7 @@
 .dropdown-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  background-color: var( --color-white );
 }
 
 .arrow {
@@ -62,15 +63,20 @@
 }
 
 .dropdown-menu.open {
+
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+
 }
 
 .dropdown-item {
+
+  font-size: var();
   padding: 14px 16px;
   cursor: pointer;
   transition: background 0.2s ease;
+
 }
 
 .dropdown-item:hover {

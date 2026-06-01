@@ -101,23 +101,23 @@ function Login({ setIsAuthenticated }) {
   return (
     <div className="main-body-style">
       <form className={style.login_form} onSubmit={handleSubmit}>
-        <h1 className="auth-page-title">LOGIN</h1>
+        <h1>LOGIN</h1>
         <div className="auth-field-container">
-          <p className="auth-field-name">Email</p>
+          <p>Email</p>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
         </div>
         <div className="auth-field-container">
-          <p className="auth-field-name">Mot de passe</p>
+          <p>Mot de passe</p>
           <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
         </div>
 		    <div>
           <p className="auth-error-message">{message}</p>
-          <button className="auth-button" type="submit">Connect</button>
+          <button type="submit">Connect</button>
         </div>
       </form>
       <div>
         <Link to="/">
-          <button className="auth-button">Return to the home Page</button>
+          <button>Return to the home Page</button>
         </Link>
       </div>
     </div>

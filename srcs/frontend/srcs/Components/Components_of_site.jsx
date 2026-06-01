@@ -86,40 +86,6 @@ export function Menu({ isAuthenticated, setIsAuthenticated }) {
         </div>
   );
 }
-       /*} <>
-         <button 
-                className="dropdown-button"
-                onClick={() => setMenuOpen( !menuOpen )}
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            { menuOpen && (
-                <nav className={ `burger-menu ${menuOpen ? "open" : "" }`} >
-                    <Link to="/">Home</Link>
-
-                    { isAuthenticated ? (
-                        <>
-                            <Link to="/session">Mon Profil</Link>
-                            <button className="menu-button-logout" type="button" onClick={ () => handleLogout(navigate, setIsAuthenticated) }>
-                                Se deconnecter
-                            </button>
-                        </>
-                    ) : (
-                        <>
-                            <Link to="/login">Login</Link>
-                            <Link to="/register">Register</Link>
-                        </>
-                    )
-                    }
-                </nav>
-            )}
-        </>*/
-    
-
 
 export const Footer = () => {
     

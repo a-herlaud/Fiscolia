@@ -6,11 +6,9 @@ function TermsOfService () {
 
     return (
         <div className="page">
-            <Header animatedLogo={false} />
             <div className="default-background">
-                This is Terms Of Service
+                <p>This is Terms Of Service</p>
             </div>
-            <Footer />
         </div>
     )
 

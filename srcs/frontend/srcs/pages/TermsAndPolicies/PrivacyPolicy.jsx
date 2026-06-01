@@ -6,11 +6,9 @@ function PrivacyPolicy () {
 
     return (
         <div className="page">
-            <Header animatedLogo={false} />
             <div className="default-background">
-                This is Privacy Policy
+                <p>This is Privacy Policy</p>
             </div>
-            <Footer />
         </div>
     )
 

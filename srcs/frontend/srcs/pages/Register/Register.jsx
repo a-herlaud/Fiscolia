@@ -9,10 +9,10 @@ import '../../index.css'
 const getIndicatorStyle = (field, isRuleMet) => {
 
   return {
-    color: field.length === 0 ? "var(--color-gray)" : (isRuleMet? "#0ac900" : "#E1000F"),
-    fontSize: "clamp( 0.5rem, 1vw, 0.6rem )",
-    marginBottom: "clamp( 0.1rem, 1vw, 0.5rem )",
-    fontWeight: "bold",
+    color: field.length === 0 ? "var( --color-gray )" : (isRuleMet? "#0ac900" : "#E1000F"),
+    fontSize: "var( --small-text-size )",
+    fontFamily: "var( --sans )",
+    marginBottom: "var( --margin-bottom )",
   };
 
 };
@@ -136,20 +136,20 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
 
     <div className="main-body-style">
       <form className={style.register_form} onSubmit={handleSubmit}>
-        <h1 className="auth-page-title">REGISTER</h1>
+        <h1>REGISTER</h1>
         <div className="auth-field-container">
-          <p className="auth-field-name" >Email</p>
+          <p>Email</p>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
         </div>
         <div className="auth-field-container">
-          <p className="auth-field-name">Retaper votre email</p>
+          <p>Retaper votre email</p>
           <div className="auth-rules-verification">
             <span style={getIndicatorStyle(formData.email, confirmRulesEmail.match_email)}>Same email</span>
           </div>
           <input type="email" name="confirm_email" value={formData.confirm_email} onChange={handleChange} placeholder="Confirm Email" />
         </div>
         <div className="auth-field-container">
-          <p className="auth-field-name">Mot de passe</p>
+          <p>Mot de passe</p>
           <div className="auth-rules-verification">
             <span style={getIndicatorStyle(formData.password, pwdRules.length)}>8+ chars</span>
             <span style={getIndicatorStyle(formData.password, pwdRules.upper)}>Majuscule</span>
@@ -159,27 +159,27 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
           <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
         </div>
         <div className="auth-field-container">
-          <p className="auth-field-name">Retaper votre mot de passe</p>
+          <p>Retaper votre mot de passe</p>
           <div className="auth-rules-verification">
             <span style={getIndicatorStyle(formData.password, confirmRulesPwd.match_pwd)}>Same password</span>
           </div>
           <input type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} placeholder="Confirm Password" />
         </div>
         <div className="auth-field-container">
-          <p className="auth-field-name">Prenom</p>
+          <p>Prenom</p>
           <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} placeholder="Prenom" />
         </div>
         <div className="auth-field-container">
-          <p className="auth-field-name">Nom</p>
+          <p>Nom</p>
           <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} placeholder="Nom" />
         </div>
         <div>
 		      <div className="auth-error-message">{message}</div>
-          <button className="auth-button" type="submit">Create Account</button>
+          <button type="submit">Create Account</button>
         </div>
         <div>
           <Link to="/">
-            <button className="auth-button">Return to Home page</button>
+            <button>Return to Home page</button>
           </Link>
         </div>
       </form>

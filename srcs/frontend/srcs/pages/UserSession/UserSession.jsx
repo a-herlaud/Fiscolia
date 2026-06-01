@@ -93,49 +93,49 @@ export default function UserSession({ setIsAuthenticated }) {
      
         <SessionHeader user={ user } />
         <div className="session-body">
-          <div className="left-block">
             <h1 className="session-h1">Mes informations personnelles</h1>
             <h2 className="session-h2">Mon identite</h2>
             <div className="session-separator"></div>
             <div className="key-value">
-              <p class="session-p key">Prénom:</p>
-              <p class="session-p value">{user.firstname}</p>
+              <p class="key">Prénom:</p>
+              <p class="value">{user.firstname}</p>
             </div>
             <div className="key-value">
-              <p class="session-p key">Nom:</p>
-              <p class="session-p value">{user.lastname}</p>
+              <p class="key">Nom:</p>
+              <p class="value">{user.lastname}</p>
             </div>
             <div className="key-value">
-              <p class="session-p key">Date de naissance:</p>
-              <p class="session-p value">non spécifié</p>
+              <p class="key">Date de naissance:</p>
+              <p class="value">non spécifié</p>
             </div>
             <div className="key-value">
-              <p class="session-p key">Lieu de naissance:</p>
-              <p class="session-p value">non spécifié</p>
+              <p class="key">Lieu de naissance:</p>
+              <p class="value">non spécifié</p>
             </div>
+
+              <h2 className="session-h2">La description de l'utilisateur</h2>
+              <div className="session-separator"></div>
+              <p class="key">Information1</p>
+              <p class="key">Information2</p>
+              <p class="key">Information3</p>
+              <p class="key">Information4</p>
 
             <h2 className="session-h2">Mon mot de passe</h2>
             <div className="session-separator"></div>
-            <p class="session-p key">*********</p>
+            <p class="key">*********</p>
 
             <h2 className="session-h2">Mes moyens de contact</h2>
             <div className="session-separator"></div>
             <div className="key-value">
-              <p class="session-p key">Adresse électronique:</p>
-              <p class="session-p value">{user.email}</p>
+              <p class="key">Adresse électronique:</p>
+              <p class="value">{user.email}</p>
             </div>
 
             <div className="session-button-position">
-              <button className="auth-button">Modifier</button>
+              <button>Modifier</button>
             </div>
           </div>
-          <details className="right-block" open>
-              <summary className="session-h2">La description de l'utilisateur</summary>
-              <p>Information1</p>
-              <p>Information2</p>
-              <p>Information3</p>
-              <p>Information4</p>
-          </details>
+              
           <div className="chat-box-container">
             <div>
               <ChatBotEmoji />
@@ -144,7 +144,6 @@ export default function UserSession({ setIsAuthenticated }) {
               Besoin d'aide?
             </div>
           </div>
-        </div>
     </div>
   );
 }
@@ -153,8 +152,8 @@ export function SessionHeader ({ user }) {
 
   return (
     <div className="session-header">
-      <p className="session-header-text-bold">{user.firstname} {user.lastname}</p>
-      <p className="session-header-text">Numero fiscal: 9334012429019</p>
+      <h2>{user.firstname} {user.lastname}</h2>
+      <p>Numero fiscal: 9334012429019</p>
     </div>
   )
 }
