@@ -92,7 +92,7 @@ export const Footer = () => {
     return (
         <footer className="footer-style" >
             <Link to="/privacy_policy" className="terms-and-policies">
-                Privacy Policy
+                <p>Politique de confidentialité</p>
             </Link>
 
             <a
@@ -108,7 +108,7 @@ export const Footer = () => {
             </a>
 
             <Link to="/terms_of_service" className="terms-and-policies">
-                Terms of Service
+                <p>Contiditions d'utilisation</p>
             </Link>
         </footer>
     )

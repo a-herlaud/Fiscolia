@@ -74,62 +74,6 @@
 
 }
 
-.footer-style {
-
-  width: 100%;
-  height: clamp(50px, 6vh, 90px);
-  background: var(--color-white);
-  color: var(--color-black);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
-  border-top: 2px solid rgba(0, 0, 0, 0.05);
-
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: space-around;
-  box-sizing: border-box;
-  padding-left: clamp( 8px, 1vw, 20px );
-  padding-right: clamp( 8px, 1vw, 20px );
-
-  z-index: 5;
-
-}
-
-.github-logo {
-
-  width: auto;
-  height: clamp( 3px, 9vw, 35px );
-  object-fit: contain;
-  display: block;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.github-logo:hover {
-
-  transform: scale( 1.1 );
-
-}
-
-.terms-and-policies {
-
-  color: var(--color-black);
-  font-size: clamp( 10px, 1.5vw, 24px );
-  text-decoration: none;
-
-}
-
-.terms-and-policies:hover {
-
-  color: var(--color-blue);
-  transform: scale( 1.1 );
-  text-decoration: none;
-
-}
-
 :root {
 
   --color-blue: #879ECB;
@@ -223,7 +167,7 @@ h2 {
   color:var( --color-black );
   font-family: var( --heading );
   line-height: 1.2;
-	font-weight: 555;
+	font-weight: 550;
 
 }
 

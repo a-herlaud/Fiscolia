@@ -101,7 +101,7 @@ function Login({ setIsAuthenticated }) {
   return (
     <div className="main-body-style">
       <form className={style.login_form} onSubmit={handleSubmit}>
-        <h1>LOGIN</h1>
+        <h1>Se connecter</h1>
         <div className="auth-field-container">
           <p>Email</p>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
@@ -112,12 +112,12 @@ function Login({ setIsAuthenticated }) {
         </div>
 		    <div>
           <p className="auth-error-message">{message}</p>
-          <button type="submit">Connect</button>
+          <button type="submit">Connexion</button>
         </div>
       </form>
       <div>
         <Link to="/">
-          <button>Return to the home Page</button>
+          <button>Retour à la page d'accueil</button>
         </Link>
       </div>
     </div>

@@ -136,7 +136,7 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
 
     <div className="main-body-style">
       <form className={style.register_form} onSubmit={handleSubmit}>
-        <h1>REGISTER</h1>
+        <h1>S'inscrire</h1>
         <div className="auth-field-container">
           <p>Email</p>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
@@ -144,9 +144,9 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
         <div className="auth-field-container">
           <p>Retaper votre email</p>
           <div className="auth-rules-verification">
-            <span style={getIndicatorStyle(formData.email, confirmRulesEmail.match_email)}>Same email</span>
+            <span style={getIndicatorStyle(formData.email, confirmRulesEmail.match_email)}>Le même email</span>
           </div>
-          <input type="email" name="confirm_email" value={formData.confirm_email} onChange={handleChange} placeholder="Confirm Email" />
+          <input type="email" name="confirm_email" value={formData.confirm_email} onChange={handleChange} placeholder="Confirmer votre email" />
         </div>
         <div className="auth-field-container">
           <p>Mot de passe</p>
@@ -156,18 +156,18 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
             <span style={getIndicatorStyle(formData.password, pwdRules.lower)}>Minuscule</span>
             <span style={getIndicatorStyle(formData.password, pwdRules.digit)}>Chiffre</span>
           </div>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Mot de passe" />
         </div>
         <div className="auth-field-container">
           <p>Retaper votre mot de passe</p>
           <div className="auth-rules-verification">
-            <span style={getIndicatorStyle(formData.password, confirmRulesPwd.match_pwd)}>Same password</span>
+            <span style={getIndicatorStyle(formData.password, confirmRulesPwd.match_pwd)}>Le même mot de passe</span>
           </div>
-          <input type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} placeholder="Confirm Password" />
+          <input type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} placeholder="Confirmer votre mot de passe" />
         </div>
         <div className="auth-field-container">
-          <p>Prenom</p>
-          <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} placeholder="Prenom" />
+          <p>Prénom</p>
+          <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} placeholder="Prénom" />
         </div>
         <div className="auth-field-container">
           <p>Nom</p>
@@ -175,11 +175,11 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
         </div>
         <div>
 		      <div className="auth-error-message">{message}</div>
-          <button type="submit">Create Account</button>
+          <button type="submit">Créer votre profil</button>
         </div>
         <div>
           <Link to="/">
-            <button>Return to Home page</button>
+            <button>Retour à la page d'accueil</button>
           </Link>
         </div>
       </form>
