@@ -31,6 +31,7 @@ function App() {
 
 	return (
 	  <BrowserRouter>
+      <title>Fiscolia</title>
 		  <div className="page">
 
         <Header 

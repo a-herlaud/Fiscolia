@@ -89,7 +89,7 @@ export default function UserSession({ setIsAuthenticated }) {
   }
 
   return (
-    <div className="main-body-style">
+    <div className="center-body-style">
      
         <SessionHeader user={ user } />
         <div className="session-body">

@@ -55,7 +55,25 @@
 
 }
 
-.main-body-style {
+.start-body-style {
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+
+  /*margin-top: 10px;*/
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
+.center-body-style {
 
   width: 100%;
 	height: 100%;

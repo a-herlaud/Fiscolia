@@ -13,7 +13,7 @@ import '../../index.css'
 function Home() {
 
 	return (
-		<div className="homepage-body">
+		<div className="start-body-style">
 			<div className="home-block">
 				<div className="text-home-block">
 					<h1>Fiscolia</h1>

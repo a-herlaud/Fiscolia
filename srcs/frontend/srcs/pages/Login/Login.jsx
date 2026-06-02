@@ -99,7 +99,7 @@ function Login({ setIsAuthenticated }) {
   };
 
   return (
-    <div className="main-body-style">
+    <div className="center-body-style">
       <form className={style.login_form} onSubmit={handleSubmit}>
         <h1>Se connecter</h1>
         <div className="auth-field-container">
