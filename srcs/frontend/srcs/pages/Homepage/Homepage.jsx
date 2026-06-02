@@ -6,7 +6,7 @@ import img_chatbot from '../../assets/site_screenshots/chatbot.png'
 import img_emoji from '../../assets/site_screenshots/emoji.png'
 import img_menu from '../../assets/site_screenshots/menu.png'
 import img_modify_profil from '../../assets/site_screenshots/modify_profil.png'
-import img_watch from '../../assets/watch.jpg'
+import img_time from '../../assets/time.png'
 import img_paix from '../../assets/paix.png'
 import '../../index.css'
 
@@ -42,7 +42,7 @@ function Home() {
 
 			<div className="home-block">
 				<div className="photo-home-block">
-					<img src={img_watch} alt="watch" />
+					<img src={img_time} alt="time" />
 				</div>
 				<div className="text-home-block">
 					<h2>Pourquoi choisir une assistance?</h2>
