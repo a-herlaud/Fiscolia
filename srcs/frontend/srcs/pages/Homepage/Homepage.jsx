@@ -16,9 +16,8 @@ function Home() {
 		<div className="start-body-style">
 			<div className="home-block">
 				<div className="text-home-block">
-					<h1>Fiscolia</h1>
-					<h2>Assistance pour remplir votre</h2>
-					<h2>déclaration fiscale</h2>
+					<h1 className="home-h1">Fiscolia</h1>
+					<h2>Assistance pour remplir votre déclaration fiscale</h2>
 					<p>Ça n'a jamais été aussi simple</p>
 				</div>
 				<div className="photo-emoji-home-block">
@@ -41,15 +40,15 @@ function Home() {
 			
 
 			<div className="home-block">
-				<div className="photo-home-block">
-					<img src={img_time} alt="time" />
-				</div>
 				<div className="text-home-block">
 					<h2>Pourquoi choisir une assistance?</h2>
 					<p>🤖 Gagnez du temps grâce à une assistance personnalisée</p>
 					<p>⚡ Réduisez les erreurs en profitant de recommandations adaptées à votre situation</p>
 					<p>📄 Obtenez des suggestions intelligentes basées sur des profils comparables</p>
 					<p>🚀 Remplissez vos formulaires en quelques minutes, sans connaissances fiscales particulières</p>
+				</div>
+				<div className="photo-home-block">
+					<img src={img_time} alt="time" />
 				</div>
 			</div>
 
@@ -67,12 +66,12 @@ function Home() {
 			
 
 			<div className="home-block">
-				<div className="photo-home-block">
-					<img src={img_menu} alt="menu" />
-				</div>
 				<div className="text-home-block">
 					<h2>Passer facilement l'authentification</h2>
 					<p>Cliquez sur le menu et sélectionnez de s'inscrire ou de se connecter</p>
+				</div>
+				<div className="photo-home-block">
+					<img src={img_menu} alt="menu" />
 				</div>
 			</div>
 

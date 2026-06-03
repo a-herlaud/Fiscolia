@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
 
 }
 
@@ -17,7 +18,7 @@
   align-items: stretch;
   /*justify-content: center;
 	align-items: center;*/
-  overflow-y: auto;
+  overflow-y: hidden;
   /*padding: 20px;*/
 	box-sizing: border-box;
   margin: 0;
@@ -132,7 +133,8 @@
   --color-gray: #D9D9D9;
   --color-black:#262624;
   --color-white:white;
-  --color-white2: #fafafa;
+  --color-white2: rgb(245, 245, 245);
+  --color-gray-shadow: #eeeeee;
   --mono: ui-monospace, Consolas, monospace;
   --font-main:
   --shadow:rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
@@ -282,10 +284,6 @@ input {
 	gap: clamp( 5px, 1vw, 12px );
 	line-height: 1;
 
-}
-
-.auth-rules-verification span{
-  color:pink;
 }
 
 .auth-error-message {
