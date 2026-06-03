@@ -8,7 +8,6 @@
 	background-color: var(--color-blue);
 
 	border-radius: clamp( 15px, 2vw, 30px );
-	padding: clamp( 20px, 5vw, 40px );
 	padding-top: clamp( 11px, 15vw, 110px );
 	padding-bottom: clamp( 50px, 5vw, 100px );
 	box-sizing: border-box;

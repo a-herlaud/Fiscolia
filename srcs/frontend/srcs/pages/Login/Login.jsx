@@ -101,7 +101,7 @@ function Login({ setIsAuthenticated }) {
   return (
     <div className="center-body-style">
       <form className={style.login_form} onSubmit={handleSubmit}>
-        <h1>Se connecter</h1>
+        <h3>Se connecter</h3>
         <div className="auth-field-container">
           <p>Email</p>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />

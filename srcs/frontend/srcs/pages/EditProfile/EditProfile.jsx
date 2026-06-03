@@ -47,7 +47,7 @@ function EditProfile() {
 
 	<div className="center-body-style">
 	  <form className="modify_form" onSubmit={handleSubmit}>
-	  <h1>Je change mon profil</h1>
+	  <h3>Je change mon profil</h3>
 	  <div className="auth-field-container">
 		<p>Etat civil</p>
 		<input type="text" name="etat_civil" value={formData.etat_civil} onChange={handleChange} placeholder="Etat civil" />

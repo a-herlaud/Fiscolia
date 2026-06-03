@@ -136,7 +136,7 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
 
     <div className="center-body-style">
       <form className={style.register_form} onSubmit={handleSubmit}>
-        <h1>S'inscrire</h1>
+        <h3>S'inscrire</h3>
         <div className="auth-field-container">
           <p>Email</p>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
