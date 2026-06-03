@@ -10,32 +10,38 @@ import github_logo from '../assets/github_logo.png'
 
 export const Header = ({ isAuthenticated, setIsAuthenticated }) => {
 
-    const location = useLocation();
-    const isHomePage = location.pathname === "/";
-    const [menuOpen, setMenuOpen] = useState( false );
-    const navigate = useNavigate();
-
     return (
         <header className="header-style">
             
-            <Link to="/" className="link-logo">
-                <img
-                    src={logo}
-                    alt="logo"
-                    key={ location.pathname }
-                    className={ isHomePage ? "header-logo-animated" : "header-logo"}
-                />
-            </Link>
+            <Logo />
             <Menu
                 isAuthenticated={isAuthenticated}
-                setIsAuthenticated={setIsAuthenticated}
-            />
+                setIsAuthenticated={setIsAuthenticated} />
 
         </header>
     )
 
 }
 export default Header;
+
+export function Logo () {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const isHomePage = location.pathname === "/";
+
+    return (
+        <Link to="/" className="link-logo">
+            <img
+                src={logo}
+                alt="logo"
+                key={ location.pathname }
+                className={ isHomePage ? "header-logo-animated" : "header-logo"}
+            />
+        </Link>
+    )
+
+}
 
 export function Menu({ isAuthenticated, setIsAuthenticated }) {
     
