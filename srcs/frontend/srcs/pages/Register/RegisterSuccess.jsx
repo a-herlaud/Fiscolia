@@ -5,7 +5,7 @@ import '../../index.css'
 function RegisterSuccess() {
  
  return (
-    <div className="main-body-style">
+    <div className="center-body-style">
      
         <h1 className="auth-page-title">Inscription reussie</h1>
         <div className="auth-field-container">

@@ -92,6 +92,40 @@
 
 }
 
+.start-body-style::-webkit-scrollbar,
+.center-body-style::-webkit-scrollbar,
+.session-body::-webkit-scrollbar {
+  
+  width: clamp( 2px, 1vw, 6px );
+
+}
+
+.start-body-style::-webkit-scrollbar-track,
+.center-body-style::-webkit-scrollbar-track,
+.session-body::-webkit-scrollbar-track {
+  
+  background: transparent;
+
+}
+
+.start-body-style::-webkit-scrollbar-thumb,
+.center-body-style::-webkit-scrollbar-thumb,
+.session-body::-webkit-scrollbar-thumb {
+  
+  background: transparent;
+  border-radius: 999px;
+  transition: background 0.3s ease;
+
+}
+
+.start-body-style::-webkit-scrollbar-thumb:hover,
+.center-body-style::-webkit-scrollbar-thumb:hover,
+.session-body::-webkit-scrollbar-thumb:hover {
+
+  background: var( --color-black );
+
+}
+
 :root {
 
   --color-blue: #879ECB;

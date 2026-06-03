@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    position: sticky;
+    /*position: sticky;*/
     text-align: left;
     padding-left: 10px;
     padding-top: 10px;
