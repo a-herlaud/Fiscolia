@@ -35,6 +35,8 @@
     box-sizing: border-box;
     overflow-wrap: break-word;
 	overflow-y: auto;
+    padding-left: 80px;
+    padding-right: 80px;
     padding-bottom: 100px;
 
     gap: clamp( 1px, 1vw, 3px )
