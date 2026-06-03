@@ -52,6 +52,7 @@ export function Menu({ isAuthenticated, setIsAuthenticated }) {
 
     const userOptions = [
         { label: "Accueil", action: withClose(() => navigate( "/" )) },
+        { label: "Chatbot", action: withClose(() => navigate( "/chatbot" )) },
         { label: "Mon profil", action: withClose(() => navigate( "/session" )) },
         { label: "Se déconnecter", action: withClose(() => handleLogout( navigate, setIsAuthenticated)) },
     ];

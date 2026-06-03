@@ -51,6 +51,7 @@ function App() {
   	        <Route path="/session" element={<UserSession 
               setIsAuthenticated={setIsAuthenticated}
             />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
             <Route path="/privacy_policy" element={<PrivacyPolicy />} />
             <Route path="/terms_of_service" element={<TermsOfService />} />
             <Route path="/chatbot" element={<Chatbot />} />

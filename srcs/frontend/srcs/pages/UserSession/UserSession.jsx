@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { handleLogout } from '../Utils/Logout.jsx';
 import { ChatBotEmoji } from './ChatBotEmoji.jsx';
@@ -132,7 +132,9 @@ export default function UserSession({ setIsAuthenticated }) {
             </div>
 
             <div className="session-button-position">
-              <button>Modifier</button>
+              <Link to="/edit-profile">
+                <button>Modifier</button>
+              </Link>
             </div>
           </div>
               

@@ -24,7 +24,7 @@ export function ChatBotEmoji() {
   }, [hovered]);
 
   const handleClick = () => {
-     window.location.href = "/chat-bot";
+     window.location.href = "/chatbot";
   };
 
   return (
