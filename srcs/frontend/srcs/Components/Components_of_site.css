@@ -201,6 +201,32 @@
 
 }
 
+
+.login_form {
+	
+	width: auto;
+	max-width: 90vw;
+	height: var( --form-height );
+	aspect-ratio: 6/9;
+	overflow-y: auto;
+	flex-shrink: 0;
+	background-color: var(--color-blue);
+
+	/*padding: clamp(24px, 5vh, 48px) clamp(20px, 4vw, 40px);*/
+	border-radius: clamp( 15px, 2vw, 30px );
+	/*padding-top: var( --form-padding-top );
+	padding-bottom: var( --form-padding-bottom );*/
+	box-sizing: border-box;
+	/*margin-top: var( --form-margin-top);*/
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+
 .footer-style {
 
   width: 100%;

@@ -94,6 +94,27 @@ export function Menu({ isAuthenticated, setIsAuthenticated }) {
   );
 }
 
+export const Form = ({ title, handleSubmit, children }) => {
+  return (
+
+    <div className="center-body-style">
+       <form className="login_form" onSubmit={handleSubmit}>
+         
+         <h3>{title}</h3>
+         { children }
+         
+         <div>
+           <Link to="/">
+             <button>Retour à la page d'accueil</button>
+           </Link>
+         </div>
+
+       </form>
+    </div>
+
+  )
+}
+
 export const Footer = () => {
     
     return (

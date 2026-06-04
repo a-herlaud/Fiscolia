@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import validator from 'validator';
 import style from './Login.module.css';
+import { Form } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 function Login({ setIsAuthenticated }) {
@@ -99,30 +100,35 @@ function Login({ setIsAuthenticated }) {
   };
 
   return (
-    <div className="center-body-style">
-      <form className={style.login_form} onSubmit={handleSubmit}>
-        <h3>Se connecter</h3>
-        <div className="auth-field-container">
-          <p>Email</p>
-          <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-        </div>
-        <div className="auth-field-container">
-          <p>Mot de passe</p>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-        </div>
-		    <div>
-          <p className="auth-error-message">{message}</p>
-          <button type="submit">Connexion</button>
-        </div>
-      </form>
-      <div>
-        <Link to="/">
-          <button>Retour à la page d'accueil</button>
-        </Link>
-      </div>
-    </div>
-  )
+    <div style={{ "--form-height": "clamp( 440px, 78vh, 700px )",
+                  "--form-padding-top": "clamp( 30px, 7vw, 90px )",
+                  "--form-padding-bottom": "clamp( 50px, 5vw, 100px )",
+                  "--form-margin-top": "clamp( 50px, 15vw, 150px )",
+                  width: "100%",
+                  height: "100%" }}>
+                    
+      <Form title="Se connecter" handleSubmit={ handleSubmit }>
 
+            <div className="auth-field-container">
+              <p>Email</p>
+              <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+            </div>
+
+            <div className="auth-field-container">
+              <p>Mot de passe</p>
+              <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+            </div>
+
+		        <div>
+              <p className="auth-error-message">{message}</p>
+              <button type="submit">Connexion</button>
+            </div>
+
+      </Form>
+
+    </div>
+
+  )
 }
 
 export default Login
