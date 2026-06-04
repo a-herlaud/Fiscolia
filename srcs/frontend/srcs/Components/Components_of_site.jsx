@@ -103,8 +103,8 @@ export const Form = ({ title, handleSubmit, children }) => {
          <h3>{title}</h3>
          { children }
          
-         <div style={{ width: "100%", display: "block"}}>
-           <Link style={{ width: "100%", display: "block"}} to="/">
+         <div style={{ width: "100%" }}>
+           <Link style={{ width: "100%", display: "block" }} to="/">
              <button>Retour à la page d'accueil</button>
            </Link>
          </div>
@@ -113,6 +113,16 @@ export const Form = ({ title, handleSubmit, children }) => {
     </div>
 
   )
+}
+
+export const AddButton = ({ title }) => {
+    return (
+
+	    <div className="button-wrapper" >
+            <button type="submit">{ title }</button>
+        </div>
+
+    )
 }
 
 export const Footer = () => {

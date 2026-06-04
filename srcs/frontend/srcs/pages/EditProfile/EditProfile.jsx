@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Form } from '../../Components/Components_of_site.jsx'
+import { AddButton, Form } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 function EditProfile() {
@@ -74,9 +74,7 @@ function EditProfile() {
 			
 			<p className="auth-error-message">{message}</p>
 
-	  		<div>
-				<button type="submit">Save profile</button>
-	  		</div>
+			<AddButton title="Sauvegarder" />
 
 	  	</Form>
 	</div>

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import validator from 'validator';
-import { Form } from '../../Components/Components_of_site.jsx'
+import { Form, AddButton } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 
@@ -181,10 +181,7 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
           </div>
 
 		      <p className="auth-error-message">{message}</p>
-
-          <div style={{ width: "100%", display: "block"}}>
-            <button type="submit">Créer votre profil</button>
-          </div>
+          <AddButton title="Créer votre profil" />
 
         </Form>
     </div>

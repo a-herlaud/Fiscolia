@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import validator from 'validator';
-import { Form } from '../../Components/Components_of_site.jsx'
+import { Form, AddButton } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 function Login({ setIsAuthenticated }) {
@@ -116,9 +116,7 @@ function Login({ setIsAuthenticated }) {
             
             <p className="auth-error-message">{message}</p>
 
-		        <div style={{ width: "100%", display: "block"}}>
-              <button type="submit">Connexion</button>
-            </div>
+            <AddButton title="Connexion" />
 
       </Form>
     </div>

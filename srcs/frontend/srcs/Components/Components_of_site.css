@@ -205,9 +205,8 @@
 .form {
 	
 	width: auto;
-  /*min-width: 300px;*/
 	max-width: 90vw;
-	height: 90%;
+	height: 93%;
 
 	aspect-ratio: 6/9;
 	overflow-y: auto;
@@ -229,6 +228,11 @@
 	text-align: center;
 }
 
+.button-wrapper{
+
+  width: 100%;
+
+}
 
 .footer-style {
 
