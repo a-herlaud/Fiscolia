@@ -91,7 +91,7 @@ export default function UserSession({ setIsAuthenticated }) {
   return (
     <div className="center-body-style">
      
-        <SessionHeader user={ user } />
+        <BodyHeader user={ user } />
         <div className="session-body">
             <h1 className="session-h1">Mes informations personnelles</h1>
             <h2 className="session-h2">Mon identite</h2>
@@ -150,7 +150,7 @@ export default function UserSession({ setIsAuthenticated }) {
   );
 }
 
-export function SessionHeader ({ user }) {
+export function BodyHeader ({ user }) {
 
   return (
     <div className="session-header">

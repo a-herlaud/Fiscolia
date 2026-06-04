@@ -98,13 +98,13 @@ export const Form = ({ title, handleSubmit, children }) => {
   return (
 
     <div className="center-body-style">
-       <form className="login_form" onSubmit={handleSubmit}>
+       <form className="form" onSubmit={handleSubmit}>
          
          <h3>{title}</h3>
          { children }
          
-         <div>
-           <Link to="/">
+         <div style={{ width: "100%", display: "block"}}>
+           <Link style={{ width: "100%", display: "block"}} to="/">
              <button>Retour à la page d'accueil</button>
            </Link>
          </div>
@@ -119,10 +119,18 @@ export const Footer = () => {
     
     return (
         <footer className="footer-style" >
-            <Link to="/privacy_policy" className="terms-and-policies">
-                <p>Politique de confidentialité</p>
-            </Link>
+            
+            <TermsAndPolicies page="/privacy_policy" title="Politique de confidentialité" />
+            <GithubLogo />
+            <TermsAndPolicies page="/terms_of_service" title="Contiditions d'utilisation" />
+            
+        </footer>
+    )
 
+}
+
+export function GithubLogo () {
+    return (
             <a
                 href="https://github.com/a-herlaud/Fiscolia"
                 target="_blank"
@@ -134,11 +142,15 @@ export const Footer = () => {
                     className="github-logo"
                 />
             </a>
-
-            <Link to="/terms_of_service" className="terms-and-policies">
-                <p>Contiditions d'utilisation</p>
-            </Link>
-        </footer>
     )
+}
 
+export function TermsAndPolicies ({ page, title }) {
+    return (
+
+         <Link to={ page } className="terms-and-policies">
+                <p>{ title }</p>
+        </Link>
+
+    )
 }

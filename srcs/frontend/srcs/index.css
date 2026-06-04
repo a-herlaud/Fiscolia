@@ -93,7 +93,8 @@
 
 .start-body-style::-webkit-scrollbar,
 .center-body-style::-webkit-scrollbar,
-.session-body::-webkit-scrollbar {
+.session-body::-webkit-scrollbar,
+.form::-webkit-scrollbar {
   
   width: clamp( 2px, 1vw, 6px );
 
@@ -101,7 +102,8 @@
 
 .start-body-style::-webkit-scrollbar-track,
 .center-body-style::-webkit-scrollbar-track,
-.session-body::-webkit-scrollbar-track {
+.session-body::-webkit-scrollbar-track,
+.form::-webkit-scrollbar-track {
   
   background: transparent;
 
@@ -109,7 +111,8 @@
 
 .start-body-style::-webkit-scrollbar-thumb,
 .center-body-style::-webkit-scrollbar-thumb,
-.session-body::-webkit-scrollbar-thumb {
+.session-body::-webkit-scrollbar-thumb,
+.form::-webkit-scrollbar-thumb {
   
   background: transparent;
   border-radius: 999px;
@@ -119,9 +122,10 @@
 
 .start-body-style::-webkit-scrollbar-thumb:hover,
 .center-body-style::-webkit-scrollbar-thumb:hover,
-.session-body::-webkit-scrollbar-thumb:hover {
+.session-body::-webkit-scrollbar-thumb:hover,
+.form::-webkit-scrollbar-thumb:hover {
 
-  background: var( --color-black );
+  background: var( --color-gray );
 
 }
 
@@ -142,9 +146,9 @@
   --text-size: clamp( 1rem, 1.5vw, 1.1rem );
   --small-text-size: clamp( 0.5rem, 1vw, 1rem );
 
-  --header1-size: clamp( 3rem, 4.5vw, 4rem );
-  --header2-size: clamp( 0.9rem, 2.6vw, 1.9rem );
-  --header3-size: clamp( 0.9rem, 3vw, 3rem );
+  --header1-size: clamp( 3.5rem, 5vw, 4rem );
+  --header2-size: clamp( 1.5rem, 3vw, 1.9rem );
+  --header3-size: clamp( 0.9rem, 5vw, 2rem );
 
   --margin-bottom: clamp( 0.1rem, 1vw, 0.5rem );
 
@@ -316,7 +320,8 @@ button {
 	border-radius: 15px;
 	font-size: clamp( 0.8rem, 1.5vw, 1.2rem );
 	padding: clamp( 10px, 1vw, 14px );
-	width: 100%;
+	width: 50%;
+  min-width: 100px;
 
   border: none;
   box-shadow: 0 10px 12px rgba( 0, 0, 145, 0.2 );

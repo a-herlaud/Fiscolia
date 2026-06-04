@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import validator from 'validator';
-import style from './Login.module.css';
 import { Form } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
@@ -101,12 +100,8 @@ function Login({ setIsAuthenticated }) {
 
   return (
     <div style={{ "--form-height": "clamp( 440px, 78vh, 700px )",
-                  "--form-padding-top": "clamp( 30px, 7vw, 90px )",
-                  "--form-padding-bottom": "clamp( 50px, 5vw, 100px )",
-                  "--form-margin-top": "clamp( 50px, 15vw, 150px )",
                   width: "100%",
                   height: "100%" }}>
-                    
       <Form title="Se connecter" handleSubmit={ handleSubmit }>
 
             <div className="auth-field-container">
@@ -118,17 +113,21 @@ function Login({ setIsAuthenticated }) {
               <p>Mot de passe</p>
               <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
             </div>
+            
+            <p className="auth-error-message">{message}</p>
 
-		        <div>
-              <p className="auth-error-message">{message}</p>
+		        <div style={{ width: "100%", display: "block"}}>
               <button type="submit">Connexion</button>
             </div>
 
       </Form>
-
     </div>
 
   )
 }
 
 export default Login
+
+{/*"--form-padding-top": "clamp( 30px, 7vw, 90px )",
+"--form-padding-bottom": "clamp( 50px, 5vw, 100px )",
+"--form-margin-top": "clamp( 50px, 15vw, 150px )",*/}

@@ -202,16 +202,19 @@
 }
 
 
-.login_form {
+.form {
 	
 	width: auto;
+  /*min-width: 300px;*/
 	max-width: 90vw;
-	height: var( --form-height );
+	height: 90%;
+
 	aspect-ratio: 6/9;
 	overflow-y: auto;
 	flex-shrink: 0;
 	background-color: var(--color-blue);
 
+  padding-bottom: clamp(2px, 1vw, 10px ); 
 	/*padding: clamp(24px, 5vh, 48px) clamp(20px, 4vw, 40px);*/
 	border-radius: clamp( 15px, 2vw, 30px );
 	/*padding-top: var( --form-padding-top );
@@ -222,7 +225,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: safe center;
 	text-align: center;
 }
 
