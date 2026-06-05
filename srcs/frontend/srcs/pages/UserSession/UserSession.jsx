@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { handleLogout } from '../Utils/Logout.jsx';
 import { ChatBotEmoji } from './ChatBotEmoji.jsx';
+import { NavigateButton } from '../../Components/Components_of_site.jsx'
 import './UserSession.css'
 
 export default function UserSession({ setIsAuthenticated }) {
@@ -132,9 +133,7 @@ export default function UserSession({ setIsAuthenticated }) {
             </div>
 
             <div className="session-button-position">
-              <Link to="/edit-profile">
-                <button>Modifier</button>
-              </Link>
+              <NavigateButton title="Modifier" destination="/edit-profile" />
             </div>
           </div>
               

@@ -103,11 +103,7 @@ export const Form = ({ title, handleSubmit, children }) => {
          <h3>{title}</h3>
          { children }
          
-         <div style={{ width: "100%" }}>
-           <Link style={{ width: "100%", display: "block" }} to="/">
-             <button>Retour à la page d'accueil</button>
-           </Link>
-         </div>
+         <NavigateButton title="Retour à la page d'accueil" destination="/" />
 
        </form>
     </div>
@@ -115,7 +111,18 @@ export const Form = ({ title, handleSubmit, children }) => {
   )
 }
 
-export const AddButton = ({ title }) => {
+export const NavigateButton = ({ title, destination }) => {
+    return (
+
+        <Link style={{ width: "100%", display: "block" }} to={ destination }>
+            <button>{ title }</button>
+        </Link>
+
+    )
+}
+
+
+export const SubmitButton = ({ title }) => {
     return (
 
 	    <div className="button-wrapper" >

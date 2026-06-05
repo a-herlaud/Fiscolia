@@ -88,9 +88,10 @@
 
 .session-button-position {
 
-    position: absolute;
+    width: 20%;
+    position: fixed;
 
-    bottom: 20px;
+    bottom: 10%;
     left: 50%;
     transform: translate(-50%);
     

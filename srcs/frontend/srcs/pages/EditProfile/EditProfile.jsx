@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { AddButton, Form } from '../../Components/Components_of_site.jsx'
+import { SubmitButton, Form } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 function EditProfile() {
@@ -42,9 +42,7 @@ function EditProfile() {
 };
 
   return (
-    <div style={{ "--form-height": "clamp( 300px, 70vw, 950px )",
-                  width: "100%",
-                  height: "100%" }}>
+    <div style={{ width: "100%", height: "100%" }}>
 		<Form title="Je change mon profil" handleSubmit={ handleSubmit }>
 					
 	  		<div className="auth-field-container">
@@ -74,7 +72,7 @@ function EditProfile() {
 			
 			<p className="auth-error-message">{message}</p>
 
-			<AddButton title="Sauvegarder" />
+			<SubmitButton title="Sauvegarder" />
 
 	  	</Form>
 	</div>

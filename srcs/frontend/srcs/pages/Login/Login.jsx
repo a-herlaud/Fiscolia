@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import validator from 'validator';
-import { Form, AddButton } from '../../Components/Components_of_site.jsx'
+import { Form, SubmitButton } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 function Login({ setIsAuthenticated }) {
@@ -99,9 +99,7 @@ function Login({ setIsAuthenticated }) {
   };
 
   return (
-    <div style={{ "--form-height": "clamp( 440px, 78vh, 700px )",
-                  width: "100%",
-                  height: "100%" }}>
+    <div style={{ width: "100%", height: "100%" }}>
       <Form title="Se connecter" handleSubmit={ handleSubmit }>
 
             <div className="auth-field-container">
@@ -116,7 +114,7 @@ function Login({ setIsAuthenticated }) {
             
             <p className="auth-error-message">{message}</p>
 
-            <AddButton title="Connexion" />
+            <SubmitButton title="Connexion" />
 
       </Form>
     </div>

@@ -152,10 +152,8 @@
 
   --margin-bottom: clamp( 0.1rem, 1vw, 0.5rem );
 
-  --form-padding-top: 0;
-  --form-padding-bottom: 0;
+
   --form-height: 0;
-  --form-margin-top: 0;
 
 
   letter-spacing: 0.18px;

@@ -1,28 +1,23 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Form, SubmitButton, NavigateButton } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 function RegisterSuccess() {
  
  return (
-    <div className="center-body-style">
-     
-        <h1 className="auth-page-title">Inscription reussie</h1>
-        <div className="auth-field-container">
-          <p className="auth-field-name">Vous pouvez vous connecter maintenant</p>
-        </div>
-        <div>
-            <Link to="/login">
-              <button className="auth-button" type="submit">Se connecter</button>
-            </Link>
-        </div>
-     
-      <div>
-        <Link to="/">
-          <button className="auth-button">Retourner a la page d'accueil</button>
-        </Link>
+  <div style={{ width: "100%", height: "100%" }}>
+    <Form title="Inscription reussie">
+    
+      <div className="auth-field-container">
+        <p className="auth-field-name">Vous pouvez vous connecter maintenant</p>
       </div>
-    </div>
+
+      <NavigateButton title="Se connecter" destination="/login" />
+  
+    </Form>
+  </div>
+
   )
 }
 

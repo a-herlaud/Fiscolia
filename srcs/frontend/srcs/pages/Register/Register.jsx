@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import validator from 'validator';
-import { Form, AddButton } from '../../Components/Components_of_site.jsx'
+import { Form, SubmitButton } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
 
@@ -133,9 +133,7 @@ const confirmRulesPwd = getValidation("confirm_password", formData.confirm_passw
 const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email, formData);
 
   return (
-    <div style={{ "--form-height": "clamp( 400px, 80vw, 1100px )",
-                  width: "100%",
-                  height: "100%" }}>
+    <div style={{ width: "100%", height: "100%" }}>
         <Form title="S'inscrire" handleSubmit={ handleSubmit }>
           
           <div className="auth-field-container">
@@ -181,7 +179,7 @@ const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email,
           </div>
 
 		      <p className="auth-error-message">{message}</p>
-          <AddButton title="Créer votre profil" />
+          <SubmitButton title="Créer votre profil" />
 
         </Form>
     </div>
