@@ -140,9 +140,7 @@ services:
   #   restart: unless-stopped
   ollama:
     container_name: ${PROJECT_NAME}-ollama
-    image: fiscolia-ollama
-    build:
-      context: ./ollama
+    image: docker.io/ollama/ollama
     healthcheck:
       test: ["CMD-SHELL", "ollama list || exit 1"]
       interval: 5s
