@@ -1,6 +1,6 @@
 """
-Clustering de profils utilisateurs - 3 catégories
-Colonnes attendues : état civil, quotient familial, situation spécifique, catégorie socio professionnelle
+Clustering of users profile -> we excpect 3 profiles
+Excpected rows : état civil, quotient familial, situation spécifique, catégorie socio professionnelle
 """
 
 import pandas as pd
@@ -62,15 +62,16 @@ encoders = {}
 df_encoded = df_clean.copy()
 
 for col in df_clean.columns:
+    # if the data in the row is not a number (pandas handle this inside dtype object or dtype.name category), but for example a string "célibataire" <- should be converted to a number
     if df_clean[col].dtype == object or df_clean[col].dtype.name == "category":
-        le = LabelEncoder()
-        df_encoded[col] = le.fit_transform(df_clean[col].astype(str))
+        le = LabelEncoder() # automatic dictionary, will be listing all the unique categories inside a column and give them a NUMBER
+        df_encoded[col] = le.fit_transform(df_clean[col].astype(str)) # to apply the new correct value according to the previous step
         encoders[col] = le
         print(f"  '{col}' : {len(le.classes_)} categories → {list(le.classes_[:5])}{'...' if len(le.classes_) > 5 else ''}")
     else:
         # Convert to numeric just for display
         try:
-            col_numeric = pd.to_numeric(df_clean[col], errors='coerce')
+            col_numeric = pd.to_numeric(df_clean[col], errors='coerce')# we should be able to convert the value to an int if not already done, but in case of error, we just force pandas to convert it to NaN
             print(f"  '{col}' : numeric (min={col_numeric.min():.1f}, max={col_numeric.max():.1f})")
         except:
             print(f"  '{col}' : could not determine type")
@@ -207,35 +208,7 @@ df_clean.to_csv(OUTPUT_CSV, index=False)
 print(f"✅ Dataset with exported profiles → {OUTPUT_CSV}")
 
 # ─────────────────────────────────────────────
-# 7. VISUALIZATION
-# ─────────────────────────────────────────────
-
-print("\n── GENERATING VISUALIZATION ──")
-
-fig, axes = plt.subplots(1, 3, figsize=(18, 5))
-fig.suptitle("Clustering – 3 user profiles", fontsize=14, fontweight="bold")
-
-# 7a. Profiles repartition
-counts = df_clean["profile"].value_counts()
-colors = ["#4C72B0", "#DD8452", "#55A868"]
-axes[0].pie(counts.values, labels=counts.index, autopct="%1.1f%%",
-            colors=colors, startangle=90)
-axes[0].set_title("Profiles repartition")
-
-# 7b. Loss function
-axes[2].plot(losses, color="#4C72B0", linewidth=2)
-axes[2].set_title("Loss function")
-axes[2].set_xlabel("Epoch")
-axes[2].set_ylabel("MSE Loss")
-axes[2].grid(alpha=0.3)
-
-plt.tight_layout()
-plt.savefig("clustering_visualisations.png", dpi=150, bbox_inches="tight")
-print("✅ Visualization stored → clustering_visualizations.png")
-plt.show()
-
-# ─────────────────────────────────────────────
-# 8. MODEL SAVING
+# 7. MODEL SAVING
 # ─────────────────────────────────────────────
 import joblib, os # joblib allows to convert python object to binary file
 
