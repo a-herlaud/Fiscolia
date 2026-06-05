@@ -94,6 +94,7 @@ services:
         condition: service_healthy
       logstash:
         condition: service_healthy
+
   db-auth:
     container_name: ${PROJECT_NAME}-db-auth
     image: db-auth-image
@@ -139,7 +140,7 @@ services:
   #   restart: unless-stopped
   ollama:
     container_name: ${PROJECT_NAME}-ollama
-    image: ollama/ollama
+    image: docker.io/ollama/ollama:latest
     healthcheck:
       test: ["CMD-SHELL", "ollama list || exit 1"]
       interval: 5s

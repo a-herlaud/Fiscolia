@@ -1,4 +1,4 @@
-FROM logstash:9.2.8
+FROM docker.io/library/logstash:9.2.8
 
 COPY ./conf/logstash.conf /etc/logstash/conf.d/logstash.conf
 

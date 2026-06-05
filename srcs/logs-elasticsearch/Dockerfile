@@ -1,4 +1,4 @@
-FROM elasticsearch:9.2.8
+FROM docker.io/library/elasticsearch:9.2.8
 
 COPY ./conf/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 
