@@ -39,7 +39,7 @@
     padding-right: 80px;
     padding-bottom: 100px;
 
-    gap: clamp( 1px, 1vw, 3px )
+    gap: clamp( 1px, 1vw, 3px );
 
 }
 

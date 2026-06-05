@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import MessageBubble from './components/MessageBubble';
-import styles from './Chat.module.css';
+import './Chat.css';
+import '../UserSession/UserSession.css'
 
 export default function Chat() {
   const [messages, setMessages] = useState([
@@ -93,7 +94,39 @@ export default function Chat() {
   };
 
   return (
-    <div className={styles.chatContainer}>
+		<div className="start-body-style">
+      <div className="chat-container">
+          
+          <div className="chat-header">
+            <h1>Fiscopain</h1>
+          </div>
+
+          <div className="messages-area">
+                {messages.map((msg) => (
+                  <MessageBubble key={msg.id} message={msg} />
+                ))}
+          </div>
+
+          <div className="input-area">
+            <input
+              type="text"
+              placeholder="Type a message..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <button onClick={handleSendMessage}>Send</button>
+
+          </div>
+
+      </div>
+    </div>
+        
+  );
+}
+
+
+ {/*<div className={styles.chatContainer}>
       <div className={styles.header}>
         <h2>Fiscopain</h2>
       </div>
@@ -114,6 +147,4 @@ export default function Chat() {
         />
         <button onClick={handleSendMessage}>Send</button>
       </div>
-    </div>
-  );
-}
+    </div>*/}

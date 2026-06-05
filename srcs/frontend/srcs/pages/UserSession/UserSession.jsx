@@ -116,10 +116,26 @@ export default function UserSession({ setIsAuthenticated }) {
 
               <h2 className="session-h2">La description de l'utilisateur</h2>
               <div className="session-separator"></div>
-              <p class="key">Information1</p>
-              <p class="key">Information2</p>
-              <p class="key">Information3</p>
-              <p class="key">Information4</p>
+              <div className="key-value">
+                <p class="key">Etat civil</p>
+                <p class="value">non spécifié</p>
+              </div>
+              <div className="key-value">
+                <p class="key">Quotient familial</p>
+                <p class="value">non spécifié</p>
+              </div>
+              <div className="key-value">
+                <p class="key">Situation spécifique</p>
+                <p class="value">non spécifié</p>
+              </div>
+              <div className="key-value">
+                <p class="key">RNI</p>
+                <p class="value">non spécifié</p>
+              </div>
+              <div className="key-value">
+                <p class="key">CSP</p>
+                <p class="value">non spécifié</p>
+              </div>
 
             <h2 className="session-h2">Mon mot de passe</h2>
             <div className="session-separator"></div>
