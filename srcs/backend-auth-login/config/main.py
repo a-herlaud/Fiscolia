@@ -84,11 +84,12 @@ def login(data: UserLogin, response: Response, db: Session = Depends(get_db), se
         # On doit creer une nouvelle session propre pour cet user
         session_id = create_session(db, user.id, data={"email": user.email}, ttl_seconds=7 * 24 * 3600)
         response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax", max_age=7 * 24 * 3600)
-        
+    #stockage du cookie supplémentaire pour les profiles_info
+    response.set_cookie(key="profiles_infos", value=extract_profiles_info(), httponly=True, samesite="lax", max_age=7 * 24 * 3600)
     return {
         "message": f"Bienvenue {user.email}",
         # "profile_complete": True,
-        # "profiles_infos": profiles_info,
+        "profiles_infos": extract_profiles_info(),# list
     }
 
 
@@ -126,7 +127,8 @@ def get_current_user_optional(session_id: Optional[str] = Cookie(None), db: Sess
     return user
 
 @auth.post("/api/edit-profile")
-def edit_profile(data: UserData, current_user: Optional[UserDB] = Depends(get_current_user_optional), db: Session = Depends(get_db)):
+def edit_profile(data: UserData, response: Response, current_user: Optional[UserDB] = Depends(get_current_user_optional),
+                 db: Session = Depends(get_db), session_id: Optional[str] = Cookie(None)):
     user_data = {
         "etat_civil": data.etat_civil,
         "quotient_familial": data.quotient_familial,
@@ -135,6 +137,8 @@ def edit_profile(data: UserData, current_user: Optional[UserDB] = Depends(get_cu
         "csp": data.csp,
 	}
     profile_info = predict_profile(user_data)
+    if session_id:
+        response.set_cookie(key="my_profile", value=profile_info, httponly=True, samesite="lax", max_age=7 * 24 * 3600)
     new_data = UserDataDB(
         etat_civil=data.etat_civil,
         quotient_familial=data.quotient_familial,

@@ -14,7 +14,7 @@ export default function Chat() {
   let messageCounter = useRef(2);
 
   useEffect(() => {
-    const socket = new WebSocket("/ws");
+    const socket = new WebSocket("ws://localhost:8083/ws");
     socketRef.current = socket;
 
     socket.onopen = () => {

@@ -2,6 +2,8 @@ FROM python:3.14-slim
 
 WORKDIR /app
 
+ENV PYTHONUNBUFFERED=1
+
 RUN apt update
 COPY tools/requirements.txt tools/requirements.txt
 RUN pip install -r tools/requirements.txt

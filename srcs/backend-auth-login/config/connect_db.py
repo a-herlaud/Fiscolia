@@ -7,6 +7,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import sessionmaker, DeclarativeBase, relationship
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text, ForeignKey, Index, func
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from uuid import uuid4
 import logging
 import asyncio
@@ -109,6 +110,18 @@ async def lifespan(app: FastAPI):
 
 auth = FastAPI(lifespan=lifespan)
 
+origins = [
+    "http://localhost:8083",
+    "http://127.0.0.1:8083",
+]
+
+auth.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_db():
     db = SessionLocal()  # ouvre le panier

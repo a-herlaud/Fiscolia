@@ -54,7 +54,7 @@ def load_models():
 		scaler   = joblib.load(MODEL_DIR / "scaler.pkl")
 		encoders = joblib.load(MODEL_DIR / "encoders.pkl")
 		kmeans   = joblib.load(MODEL_DIR / "kmeans.pkl")
-		print("scaler, encoders and kmeans created")
+		# print("scaler, encoders and kmeans created")
 	except:
 		return None, None, None, None
 
@@ -93,8 +93,8 @@ def predict_profile(user_data: dict) -> int:
 
 	# 2. Mise en forme + normalisation
 	features = np.array(list(encoded.values()), dtype=float).reshape(1, -1)
-	print(f"ensemble des features : {features}")
-	print(f"ensemble encoded : {encoded}")
+	# print(f"ensemble des features : {features}")
+	# print(f"ensemble encoded : {encoded}")
 	features_scaled = scaler.transform(features)
 
 	# 3. Passage dans l'autoencodeur → vecteur latent
@@ -105,7 +105,7 @@ def predict_profile(user_data: dict) -> int:
 	# 4. KMeans → cluster
 	cluster = kmeans.predict(latent.numpy())[0]
 
-	print(f"Le modèle ressemble à {model}")
+	# print(f"Le modèle ressemble à {model}")
 
 	return int(cluster) + 1  # +1 pour avoir Profil 1/2/3 au lieu de 0/1/2
 
@@ -123,8 +123,6 @@ def describe_profiles():
 		3: {...},
 	}
 	"""
-	print("hello describe profile")
-	print("T1")
 
 	with engine.connect() as conn:
 		rows = conn.execute(
@@ -174,7 +172,6 @@ def extract_profiles_info():
 			prompt_lines.append(f"- {key}: {val}")
 		list_of_prompts.append("\n".join(prompt_lines))
 
-	if list_of_prompts:
-		print(list_of_prompts[0])
+	print(list_of_prompts)
 
 	return list_of_prompts

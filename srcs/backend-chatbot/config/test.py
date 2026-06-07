@@ -12,7 +12,7 @@ OLLAMA_EMBED_MODEL = "nomic-embed-text"
 
 client_ollama = ollama.Client(OLLAMA_BASE_URL)
 
-def get_agent_answer(user_question):
+def get_agent_answer(user_question, contexte_profil, my_profile):
 
 	embeddings_model = OllamaEmbeddings(
 		model=OLLAMA_EMBED_MODEL,
@@ -31,17 +31,22 @@ def get_agent_answer(user_question):
 	print("Test 3")
 
 	# 4. Construire le prompt
-	contexte = "\n\n---\n\n".join([doc.page_content for doc in resultats])
-	prompt = f"""Tu es un assistant fiscal français.
-	Réponds uniquement en te basant sur le contexte ci-dessous.
-	Si la réponse n'est pas dans le contexte, dis-le clairement.
+	contexte_docs = "\n\n---\n\n".join([doc.page_content for doc in resultats])
+	prompt = f"""Tu es un assistant fiscal français spécialisé.
+    Tu t'adresses à un utilisateur dont le profil actif est le suivant : {my_profile}.
+    
+    Voici la description complète de l'ensemble des profils disponibles pour ton information :
+    {contexte_profil}
 
-	CONTEXTE :
-	{contexte}
+    Consigne principale : Réponds à la question de l'utilisateur en priorité en te basant sur le CONTEXTE JURIDIQUE ci-dessous, tout en l'adaptant à la situation du profil actif ({my_profile}) si cela est pertinent.
+    Si la réponse n'est pas du tout liée au contexte, dis-le clairement.
 
-	QUESTION :
-	{user_question}
+    CONTEXTE JURIDIQUE :
+    {contexte_docs}
 
-	RÉPONSE :"""
+    QUESTION DE L'UTILISATEUR :
+    {user_question}
+
+    RÉPONSE :"""
 	
 	return (prompt)

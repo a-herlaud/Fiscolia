@@ -152,7 +152,7 @@ services:
     networks:
       - fiscolia
     volumes:
-      - ${OLLAMA_MODELS_PATH}:/root/.ollama/models:Z
+      - ollama_models:/root/.ollama/models:Z
     env_file:
       - ../.env
 
@@ -280,6 +280,8 @@ networks:
 
 volumes:
   db_auth:
+    driver: local
+  ollama_models:
     driver: local
 
 secrets:
