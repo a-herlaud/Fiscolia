@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { handleLogout } from '../Utils/Logout.jsx';
-import { ChatBotEmoji } from './ChatBotEmoji.jsx';
+import { ChatBot, ChatBotEmoji } from '../../Components/ChatBotEmoji.jsx';
 import { NavigateButton } from '../../Components/Components_of_site.jsx'
 import './UserSession.css'
 
@@ -153,14 +153,7 @@ export default function UserSession({ setIsAuthenticated }) {
             </div>
           </div>
               
-          <div className="chat-box-container">
-            <div>
-              <ChatBotEmoji />
-            </div>
-            <div className="text-under-emoji">
-              Besoin d'aide?
-            </div>
-          </div>
+          <ChatBot />
     </div>
   );
 }

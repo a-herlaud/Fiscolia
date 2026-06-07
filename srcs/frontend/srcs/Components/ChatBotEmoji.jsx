@@ -1,5 +1,20 @@
 import { useState, useEffect } from 'react'
-import './UserSession.css'
+import './ChatBotEmoji.css'
+
+export function ChatBot() {
+  return (
+
+    <div className="chat-box-container">
+      <div>
+        <ChatBotEmoji />
+      </div>
+      <div className="text-under-emoji">
+        Besoin d'aide?
+      </div>
+    </div>
+
+  )
+}
 
 export function ChatBotEmoji() {
     const [emotion, setEmotion] = useState("normal");

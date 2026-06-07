@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { SubmitButton, Form } from '../../Components/Components_of_site.jsx'
 import '../../index.css'
 
+
 function EditProfile() {
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -43,6 +44,7 @@ function EditProfile() {
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
+
 		<Form title="Je change mon profil" handleSubmit={ handleSubmit }>
 					
 	  		<div className="auth-field-container">
@@ -76,6 +78,7 @@ function EditProfile() {
 
 	  	</Form>
 	</div>
+
   );
 }
 
