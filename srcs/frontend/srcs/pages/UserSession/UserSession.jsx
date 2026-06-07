@@ -98,55 +98,62 @@ export default function UserSession({ setIsAuthenticated }) {
             <h2 className="session-h2">Mon identite</h2>
             <div className="session-separator"></div>
             <div className="key-value">
-              <p class="key">Prénom:</p>
-              <p class="value">{user.firstname}</p>
+              <p className="key">Prénom:</p>
+              <p className="value">{user.firstname}</p>
             </div>
             <div className="key-value">
-              <p class="key">Nom:</p>
-              <p class="value">{user.lastname}</p>
+              <p className="key">Nom:</p>
+              <p className="value">{user.lastname}</p>
             </div>
             <div className="key-value">
-              <p class="key">Date de naissance:</p>
-              <p class="value">non spécifié</p>
+              <p className="key">Date de naissance:</p>
+              <p className="value">non spécifié</p>
             </div>
             <div className="key-value">
-              <p class="key">Lieu de naissance:</p>
-              <p class="value">non spécifié</p>
+              <p className="key">Lieu de naissance:</p>
+              <p className="value">non spécifié</p>
             </div>
 
               <h2 className="session-h2">La description de l'utilisateur</h2>
               <div className="session-separator"></div>
               <div className="key-value">
-                <p class="key">Etat civil</p>
-                <p class="value">non spécifié</p>
+                <p className="key">Etat civil</p>
+                <p className="value">non spécifié</p>
               </div>
               <div className="key-value">
-                <p class="key">Quotient familial</p>
-                <p class="value">non spécifié</p>
+                <p className="key">Quotient familial</p>
+                <p className="value">non spécifié</p>
               </div>
               <div className="key-value">
-                <p class="key">Situation spécifique</p>
-                <p class="value">non spécifié</p>
+                <p className="key">Situation spécifique</p>
+                <p className="value">non spécifié</p>
               </div>
               <div className="key-value">
-                <p class="key">RNI</p>
-                <p class="value">non spécifié</p>
+                <p className="key">RNI</p>
+                <p className="value">non spécifié</p>
               </div>
               <div className="key-value">
-                <p class="key">CSP</p>
-                <p class="value">non spécifié</p>
+                <p className="key">CSP</p>
+                <p className="value">non spécifié</p>
               </div>
 
             <h2 className="session-h2">Mon mot de passe</h2>
             <div className="session-separator"></div>
-            <p class="key">*********</p>
+            <p className="key">*********</p>
 
             <h2 className="session-h2">Mes moyens de contact</h2>
             <div className="session-separator"></div>
             <div className="key-value">
-              <p class="key">Adresse électronique:</p>
-              <p class="value">{user.email}</p>
+              <p className="key">Adresse électronique:</p>
+              <p className="value">{user.email}</p>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
 
             <div className="session-button-position">
               <NavigateButton title="Modifier" destination="/edit-profile" />
