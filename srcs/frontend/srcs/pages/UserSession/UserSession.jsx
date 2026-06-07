@@ -10,6 +10,39 @@ export default function UserSession({ setIsAuthenticated }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+    const [formData, setProfileData] = useState({
+    etat_civil: "",
+    quotient_familial: "",
+    situation_specifique: "",
+    rni: "",
+    csp: "",
+  });
+
+
+  useEffect(() => {
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch("/api/get-profile", {
+        method: "GET",
+        credentials: "include",
+      });
+      if (!response.ok) return;
+      const data = await response.json();
+      setFormData({
+        etat_civil: data.etat_civil || "",
+        quotient_familial: data.quotient_familial || "",
+        situation_specifique: data.situation_specifique || "",
+        rni: data.rni || "",
+        csp: data.csp || "",
+      });
+    } catch (error) {
+      console.log("Failed to get user descrption", error);
+    }
+  };
+
+  fetchProfile();
+}, []);
+
   useEffect(() => {
     // Fetch user info if authenticated
     const fetchUser = async () => {
@@ -118,23 +151,23 @@ export default function UserSession({ setIsAuthenticated }) {
               <div className="session-separator"></div>
               <div className="key-value">
                 <p className="key">Etat civil</p>
-                <p className="value">non spécifié</p>
+                <p className="value">{ formData.etat_civil || "non spécifié" }</p>
               </div>
               <div className="key-value">
                 <p className="key">Quotient familial</p>
-                <p className="value">non spécifié</p>
+                <p className="value">{ formData.quotient_familial || "non spécifié" }</p>
               </div>
               <div className="key-value">
                 <p className="key">Situation spécifique</p>
-                <p className="value">non spécifié</p>
+                <p className="value">{ formData.situation_specifique || "non spécifié" }</p>
               </div>
               <div className="key-value">
                 <p className="key">RNI</p>
-                <p className="value">non spécifié</p>
+                <p className="value">{ formData.rni || "non spécifié" }</p>
               </div>
               <div className="key-value">
                 <p className="key">CSP</p>
-                <p className="value">non spécifié</p>
+                <p className="value">{ formData.csp || "non spécifié" }</p>
               </div>
 
             <h2 className="session-h2">Mon mot de passe</h2>

@@ -149,6 +149,23 @@ def edit_profile(data: UserData, current_user: Optional[UserDB] = Depends(get_cu
     db.refresh(new_data)
     return {"message": "Thank you, your data has been used for ML"}
 
+@auth.get("/api/get-profile")
+def get_profile(current_user: Optional[UserDB] = Depends(get_current_user_optional), db: Session = Depends(get_db)):
+    if not current_user:
+        return {"etat_civil": "", "quotient_familial": "", "situation_specifique": "", "rni": "", "csp": ""}
+    
+    user_data = db.query(UserDataDB).filter(UserDataDB.user_id == current_user.id).order_by(UserDataDB.id.desc()).first()
+    
+    if not user_data:
+        return {"etat_civil": "", "quotient_familial": "", "situation_specifique": "", "rni": "", "csp": ""}
+    
+    return {
+        "etat_civil": user_data.etat_civil,
+        "quotient_familial": user_data.quotient_familial,
+        "situation_specifique": user_data.situation_specifique,
+        "rni": user_data.rni,
+        "csp": user_data.csp,
+    }
 # backend-auth/
 # ├── app/
 # │   ├── main.py            # Point d'entrée (FastAPI)
