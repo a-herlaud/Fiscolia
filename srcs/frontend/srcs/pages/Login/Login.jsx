@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import validator from 'validator';
+import { Form, SubmitButton } from '../../Components/Components_of_site.jsx'
+import '../../index.css'
 
+function Login({ setIsAuthenticated }) {
 
-function Login() {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -25,6 +27,21 @@ function Login() {
     checkSession();
   }, [navigate]);
 
+  const getValidation = (field, value, data) => {
+  
+      switch (field) {
+        case "email":
+          return {
+            not_empty: value.trim() !== "",
+            valid: validator.isEmail(value),
+          };
+        case "password":
+          return {
+            not_empty: value.trim() !== "",
+          }
+        }
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -32,6 +49,22 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // VERIFICATION DATA
+    const fieldsToValidate = ["email", "password"];
+
+    for (const fieldName of fieldsToValidate) {
+      const value = formData[fieldName];
+      const rules = getValidation(fieldName, value, formData);
+      
+      const isFieldValid = Object.values(rules).every(v => v === true);
+
+      if (!isFieldValid) {
+        setMessage(`Invalid email or password`);
+        return;
+      }
+    }
+
     try {
       const response = await fetch("/api/auth-login", {
         method: 'POST',
@@ -45,9 +78,16 @@ function Login() {
       if (!response.ok) {
         const errorData = await response.json();
         setMessage(errorData.detail || "Email or password incorrect");
+
+        setFormData({
+          email: "",
+          password: "",
+        });
+
         return;
       }
-
+      setIsAuthenticated(true);
+      navigate( "/session" );
       const data = await response.json();
       setMessage(data.message);
       
@@ -59,23 +99,31 @@ function Login() {
   };
 
   return (
-    <div style={{ textAlign: "center", alignContent: "center" }}>
-      <h1 style={{ color:"#818cf8"}}>LOGIN</h1>
-      <form onSubmit={handleSubmit}>
-        <p>Email</p>
-        <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-        <p>Mot de passe</p>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-		<p>{message}</p>
-        <button type="submit">Connect</button>
-      </form>
-      <div>
-        <Link to="/">
-          <button>Return to the home Page</button>
-        </Link>
-      </div>
+    <div style={{ width: "100%", height: "100%" }}>
+      <Form title="Se connecter" handleSubmit={ handleSubmit }>
+
+            <div className="auth-field-container">
+              <p>Email</p>
+              <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+            </div>
+
+            <div className="auth-field-container">
+              <p>Mot de passe</p>
+              <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+            </div>
+            
+            <p className="auth-error-message">{message}</p>
+
+            <SubmitButton title="Connexion" />
+
+      </Form>
     </div>
-  );
+
+  )
 }
 
 export default Login
+
+{/*"--form-padding-top": "clamp( 30px, 7vw, 90px )",
+"--form-padding-bottom": "clamp( 50px, 5vw, 100px )",
+"--form-margin-top": "clamp( 50px, 15vw, 150px )",*/}

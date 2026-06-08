@@ -1,20 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import style from './Register.module.css';
+import validator from 'validator';
+import { Form, SubmitButton } from '../../Components/Components_of_site.jsx'
+import '../../index.css'
 
 
 
 const getIndicatorStyle = (field, isRuleMet) => {
+
   return {
-    color: field.length === 0 ? "#505050" : (isRuleMet? "#0ac900" : "#E1000F"),
-    fontSize: "10px",
-    marginBottom: "1px",
-    fontWeight: "bold"
+    color: field.length === 0 ? "var( --color-gray )" : (isRuleMet? "#0ac900" : "#E1000F"),
+    fontSize: "var( --small-text-size )",
+    fontFamily: "var( --sans )",
+    marginBottom: "var( --margin-bottom )",
   };
+
 };
 
 function Register() {
+
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     confirm_email: "",
@@ -25,7 +31,16 @@ function Register() {
   });
 
   const getValidation = (field, value, data) => {
+
     switch (field) {
+      case "email":
+        return {
+          not_empty: value.trim() !== "",
+          valid: validator.isEmail(value),
+          valid_format: /^[a-zA-Z0-9][a-zA-Z0-9._%-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
+          min_length: value.length >= 5,
+          max_length: value.length <= 254,
+        };
       case "password":
         return {
           length: value.length >= 8,
@@ -43,8 +58,8 @@ function Register() {
         };
       default:
         return {};
-    
     }
+
   };
 
   const handleChange = (e) => {
@@ -69,7 +84,7 @@ function Register() {
     if (!isFieldValid) {
       // Si une règle échoue, on définit le message et on S'ARRÊTE là (return)
       setMessage(`Erreur dans le champ : ${fieldName}`);
-      return; 
+      return;
     }
   }
 
@@ -87,11 +102,20 @@ function Register() {
 		if (!response.ok)
 		{
 			setMessage("Une erreur est survenue");
+      setFormData({
+        email: "",
+        confirm_email: "",
+        password: "",
+        confirm_password: "",
+        firstname: "",
+        lastname: "",
+      }); 
 			return ;
 		}
 		const data = await response.json();
+    navigate("/register-success");
 		console.log(data);
-		setMessage(data.message);
+		//setMessage(data.message);
 	}
 	catch (error) {
 		setMessage("ERROR");
@@ -109,59 +133,58 @@ const confirmRulesPwd = getValidation("confirm_password", formData.confirm_passw
 const confirmRulesEmail = getValidation("confirm_email", formData.confirm_email, formData);
 
   return (
+    <div style={{ width: "100%", height: "100%" }}>
+        <Form title="S'inscrire" handleSubmit={ handleSubmit }>
+          
+          <div className="auth-field-container">
+            <p>Email</p>
+            <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+          </div>
 
+          <div className="auth-field-container">
+            <p>Retaper votre email</p>
+            <div className="auth-rules-verification">
+              <span style={getIndicatorStyle(formData.email, confirmRulesEmail.match_email)}>Le même email</span>
+            </div>
+            <input type="email" name="confirm_email" value={formData.confirm_email} onChange={handleChange} placeholder="Confirmer votre email" />
+          </div>
 
-    <div className={style.pages}>
-      <form className={style.form} onSubmit={handleSubmit}>
-      <h1 className={style.page_title}>REGISTER</h1>
-      <div className={style.field_container}>
-        <p className={style.field_name} >Email</p>
-        <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-      </div>
-      <div className={style.field_container}>
-        <p className={style.field_name}>Retaper votre email</p>
-        <div className={style.rules_verification}>
-          <span style={getIndicatorStyle(formData.email, confirmRulesEmail.match_email)}>Same email</span>
-        </div>
-          <input type="email" name="confirm_email" value={formData.confirm_email} onChange={handleChange} placeholder="Confirm Email" />
-      </div>
-      <div className={style.field_container}>
-        <p className={style.field_name}>Mot de passe</p>
-        <div className={style.rules_verification}>
-          <span style={getIndicatorStyle(formData.password, pwdRules.length)}>8+ chars</span>
-          <span style={getIndicatorStyle(formData.password, pwdRules.upper)}>Majuscule</span>
-          <span style={getIndicatorStyle(formData.password, pwdRules.lower)}>Minuscule</span>
-          <span style={getIndicatorStyle(formData.password, pwdRules.digit)}>Chiffre</span>
-        </div>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-      </div>
-      <div className={style.field_container}>
-        <p className={style.field_name}>Retaper votre mot de passe</p>
-        <div className={style.rules_verification}>
-          <span style={getIndicatorStyle(formData.password, confirmRulesPwd.match_pwd)}>Same password</span>
-        </div>
-          <input type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} placeholder="Confirm Password" />
-      </div>
-      <div className={style.field_container}>
-        <p className={style.field_name}>Prenom</p>
-          <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} placeholder="Prenom" />
-      </div>
-      <div className={style.field_container}>
-        <p className={style.field_name}>Nom</p>
-          <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} placeholder="Nom" />
-      </div>
-      <div>
-		    <p>{message}</p>
-        <button type="submit">Create Account</button>
-      </div>
-      <div>
-        <Link to="/">
-          <button>Return to Home page</button>
-        </Link>
-      </div>
-      </form>
+          <div className="auth-field-container">
+            <p>Mot de passe</p>
+            <div className="auth-rules-verification">
+              <span style={getIndicatorStyle(formData.password, pwdRules.length)}>8+ chars</span>
+              <span style={getIndicatorStyle(formData.password, pwdRules.upper)}>Majuscule</span>
+              <span style={getIndicatorStyle(formData.password, pwdRules.lower)}>Minuscule</span>
+              <span style={getIndicatorStyle(formData.password, pwdRules.digit)}>Chiffre</span>
+            </div>
+            <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Mot de passe" />
+          </div>
+
+          <div className="auth-field-container">
+            <p>Retaper votre mot de passe</p>
+            <div className="auth-rules-verification">
+              <span style={getIndicatorStyle(formData.password, confirmRulesPwd.match_pwd)}>Le même mot de passe</span>
+            </div>
+            <input type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} placeholder="Confirmer votre mot de passe" />
+          </div>
+
+          <div className="auth-field-container">
+            <p>Prénom</p>
+            <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} placeholder="Prénom" />
+          </div>
+
+          <div className="auth-field-container">
+            <p>Nom</p>
+            <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} placeholder="Nom" />
+          </div>
+
+		      <p className="auth-error-message">{message}</p>
+          <SubmitButton title="Créer votre profil" />
+
+        </Form>
     </div>
-  );
+  )
+
 }
 
 export default Register

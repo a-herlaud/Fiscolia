@@ -29,7 +29,6 @@ jobs:
           echo "${{ secrets.DB_AUTH_PWD }}" > secrets/db_auth_pwd.txt
           echo "${{ secrets.DB_ROOT_PWD }}" > secrets/db_root_pwd.txt
           echo "PROJECT_NAME=${{ vars.PROJECT_NAME }}" > .env
-          echo "PROXY_EXPOSED_PORT=${{ vars.PROXY_EXPOSED_PORT }}" >> .env 
           echo "DB_AUTH_USER=${{ vars.DB_AUTH_USER }}" >> .env
           echo "DB_AUTH_SECRETS=${{ vars.DB_AUTH_SECRETS }}" >> .env
           echo "DB_AUTH_PORT=${{ vars.DB_AUTH_PORT }}" >> .env

@@ -1,10 +1,47 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { handleLogout } from '../Utils/Logout.jsx';
+import { ChatBot, ChatBotEmoji } from '../../Components/ChatBotEmoji.jsx';
+import { NavigateButton } from '../../Components/Components_of_site.jsx'
+import './UserSession.css'
 
-export default function UserSession() {
+export default function UserSession({ setIsAuthenticated }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+    const [formData, setProfileData] = useState({
+    etat_civil: "",
+    quotient_familial: "",
+    situation_specifique: "",
+    rni: "",
+    csp: "",
+  });
+
+
+  useEffect(() => {
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch("/api/get-profile", {
+        method: "GET",
+        credentials: "include",
+      });
+      if (!response.ok) return;
+      const data = await response.json();
+      setFormData({
+        etat_civil: data.etat_civil || "",
+        quotient_familial: data.quotient_familial || "",
+        situation_specifique: data.situation_specifique || "",
+        rni: data.rni || "",
+        csp: data.csp || "",
+      });
+    } catch (error) {
+      console.log("Failed to get user descrption", error);
+    }
+  };
+
+  fetchProfile();
+}, []);
 
   useEffect(() => {
     // Fetch user info if authenticated
@@ -66,19 +103,7 @@ export default function UserSession() {
     fetchUser();
   }, [navigate]);
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch("/api/auth-logout", {
-        method: "POST",
-        credentials: "include",
-      });
-      console.log("Logout response:", response.status);
-    } catch (err) {
-      console.error("Logout error:", err);
-    } finally {
-      navigate("/");
-    }
-  };
+
 
   const handleUpload = () => {
     navigate("/upload");
@@ -89,7 +114,7 @@ export default function UserSession() {
   };
 
   if (loading) {
-    return <p style={{ textAlign: "center", marginTop: "2rem" }}>Loading...</p>;
+    return <p className="auth-field-name">Loading...</p>;
   }
 
   // Only show if user is authenticated
@@ -98,69 +123,87 @@ export default function UserSession() {
   }
 
   return (
-    <div style={{ textAlign: "center", marginTop: "3rem" }}>
-      <h1 style={{ color: "#818cf8" }}>Welcome {user.email}</h1>
-      <p style={{ marginBottom: "2rem", fontSize: "1.1rem" }}>You are authenticated ✓</p>
+    <div className="center-body-style">
+     
+        <BodyHeader user={ user } />
+        <div className="session-body">
+            <h1 className="session-h1">Mes informations personnelles</h1>
+            <h2 className="session-h2">Mon identite</h2>
+            <div className="session-separator"></div>
+            <div className="key-value">
+              <p className="key">Prénom:</p>
+              <p className="value">{user.firstname}</p>
+            </div>
+            <div className="key-value">
+              <p className="key">Nom:</p>
+              <p className="value">{user.lastname}</p>
+            </div>
+            <div className="key-value">
+              <p className="key">Date de naissance:</p>
+              <p className="value">non spécifié</p>
+            </div>
+            <div className="key-value">
+              <p className="key">Lieu de naissance:</p>
+              <p className="value">non spécifié</p>
+            </div>
 
-      <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginBottom: "2rem" }}>
-        <button
-          type="button"
-          onClick={handleEditProfile}
-          style={{
-            padding: "0.75rem 1.5rem",
-            fontSize: "1rem",
-            backgroundColor: "#10b981",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            transition: "background-color 0.2s",
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = "#059669"}
-          onMouseLeave={(e) => e.target.style.backgroundColor = "#10b981"}
-        >
-          Edit profile
-        </button>
+              <h2 className="session-h2">La description de l'utilisateur</h2>
+              <div className="session-separator"></div>
+              <div className="key-value">
+                <p className="key">Etat civil</p>
+                <p className="value">{ formData.etat_civil || "non spécifié" }</p>
+              </div>
+              <div className="key-value">
+                <p className="key">Quotient familial</p>
+                <p className="value">{ formData.quotient_familial || "non spécifié" }</p>
+              </div>
+              <div className="key-value">
+                <p className="key">Situation spécifique</p>
+                <p className="value">{ formData.situation_specifique || "non spécifié" }</p>
+              </div>
+              <div className="key-value">
+                <p className="key">RNI</p>
+                <p className="value">{ formData.rni || "non spécifié" }</p>
+              </div>
+              <div className="key-value">
+                <p className="key">CSP</p>
+                <p className="value">{ formData.csp || "non spécifié" }</p>
+              </div>
 
-        <button
-          type="button"
-          onClick={handleUpload}
-          style={{
-            padding: "0.75rem 1.5rem",
-            fontSize: "1rem",
-            backgroundColor: "#818cf8",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            transition: "background-color 0.2s",
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = "#6366f1"}
-          onMouseLeave={(e) => e.target.style.backgroundColor = "#818cf8"}
-        >
-          Upload File
-        </button>
+            <h2 className="session-h2">Mon mot de passe</h2>
+            <div className="session-separator"></div>
+            <p className="key">*********</p>
 
-        <button
-          type="button"
-          onClick={handleLogout}
-          style={{
-            padding: "0.75rem 1.5rem",
-            fontSize: "1rem",
-            backgroundColor: "#ef4444",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            transition: "background-color 0.2s",
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = "#dc2626"}
-          onMouseLeave={(e) => e.target.style.backgroundColor = "#ef4444"}
-        >
-          Logout
-        </button>
-      </div>
+            <h2 className="session-h2">Mes moyens de contact</h2>
+            <div className="session-separator"></div>
+            <div className="key-value">
+              <p className="key">Adresse électronique:</p>
+              <p className="value">{user.email}</p>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div className="session-button-position">
+              <NavigateButton title="Modifier" destination="/edit-profile" />
+            </div>
+          </div>
+              
+          <ChatBot />
     </div>
   );
 }
 
+export function BodyHeader ({ user }) {
+
+  return (
+    <div className="session-header">
+      <h2>{user.firstname} {user.lastname}</h2>
+      <p>Numero fiscal: 9334012429019</p>
+    </div>
+  )
+}

@@ -1,0 +1,289 @@
+.dropdown-container {
+
+  position: relative;
+  width: 240px;
+  
+}
+
+.dropdown-button {
+
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 16px;
+
+  border: none;
+  text-decoration: none;
+  border-radius: 14px;
+  box-shadow: none;
+
+  background: transparent; /*var( --color-blue );*/
+  /*box-shadow: 0 8px 25px var( --color-black );*/
+
+  font-size: 16px;
+  font-weight: 500;
+
+  transition: all 0.25s ease;
+
+}
+
+.dropdown-button:hover {
+
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var( --color-black );
+  background-color: var( --color-white );
+  opacity: 1;
+
+}
+
+.arrow {
+
+  transition: transform 0.3s ease;
+  opacity: 1;
+
+}
+
+.arrow.rotate {
+
+  transform: rotate(180deg);
+
+}
+
+.dropdown-menu {
+
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+
+  width: 100%;
+
+  background: var( --color-white );
+  color: var( --color-black );
+  border-radius: 14px;
+
+  box-shadow: 0 10px 30px var( --color-black );
+
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+
+}
+
+.dropdown-menu.open {
+
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
+}
+
+.dropdown-item {
+
+  font-size: var();
+  padding: 14px 16px;
+  transition: background 0.2s ease;
+
+}
+
+.dropdown-item:hover {
+
+  background: var( --color-gray-shadow );
+
+}
+
+.header-logo {
+
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+
+}
+
+.header-logo:hover {
+
+  transform: scale( 1.008 );
+
+}
+
+.header-logo-animated {
+
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  z-index: 4;
+  transform: translateX( -120% );
+
+  animation: headerLogo 1s ease forwards;
+
+}
+
+@keyframes headerLogo {
+
+  from {
+    opacity: 0;
+    transform: translateX( -120% );
+  }
+  to {
+    opacity: 1;
+    transform: translateX( 0 );
+  }
+
+}
+
+.header-logo {
+
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+
+}
+
+.header-logo:hover {
+
+  transform: scale( 1.008 );
+
+}
+
+.header-logo-animated {
+
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  z-index: 4;
+  transform: translateX( -120% );
+
+  animation: headerLogo 1s ease forwards;
+
+}
+
+@keyframes headerLogo {
+
+  from {
+    opacity: 0;
+    transform: translateX( -120% );
+  }
+  to {
+    opacity: 1;
+    transform: translateX( 0 );
+  }
+
+}
+
+
+.form {
+	
+	width: auto;
+	max-width: 90vw;
+	height: 93%;
+
+	aspect-ratio: 6/9;
+	overflow-y: auto;
+	flex-shrink: 0;
+	background-color: var(--color-blue);
+
+  padding-bottom: clamp(2px, 1vw, 10px ); 
+	/*padding: clamp(24px, 5vh, 48px) clamp(20px, 4vw, 40px);*/
+	border-radius: clamp( 15px, 2vw, 30px );
+	/*padding-top: var( --form-padding-top );
+	padding-bottom: var( --form-padding-bottom );*/
+	box-sizing: border-box;
+	/*margin-top: var( --form-margin-top);*/
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: safe center;
+	text-align: center;
+}
+
+.button-wrapper{
+
+  width: 100%;
+
+}
+
+.footer-style {
+
+  width: 100%;
+  height: clamp(50px, 6vh, 90px);
+  background: var( --color-white );
+  color: var(--color-black);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border-top: 2px solid rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding-left: clamp( 8px, 1vw, 20px );
+  padding-right: clamp( 8px, 1vw, 20px );
+
+  z-index: 5;
+
+}
+
+.github-logo {
+
+  width: auto;
+  height: clamp( 3px, 9vw, 35px );
+  object-fit: contain;
+  display: block;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.github-logo:hover {
+
+  transform: scale( 1.1 );
+
+}
+
+.terms-and-policies {
+  
+  text-decoration: none;
+
+}
+
+.terms-and-policies:hover p{
+
+  color: var(--color-blue);
+  transform: scale( 1.1 );
+  text-decoration: none;
+
+}
