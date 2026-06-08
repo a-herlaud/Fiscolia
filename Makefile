@@ -16,8 +16,8 @@ all :
 	@sleep 2
 	@$(MAKE) container_check -s
 	@$(MAKE) ps 
-	@echo -e "$(YELLOW) Project available at http://localhost:8083 $(RESET)"
-	@echo -e "$(GREEN) Dashboard available at http://localhost:8083/kibana/app/dashboards $(RESET)"
+	@echo -e "$(YELLOW) Project available at https://localhost $(RESET)"
+	@echo -e "$(GREEN) Dashboard available at https://localhost/kibana/app/dashboards $(RESET)"
 
 clean:
 	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml --profile chatbot down
