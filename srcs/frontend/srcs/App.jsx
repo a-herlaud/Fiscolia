@@ -12,6 +12,7 @@ import EditProfile from './pages/EditProfile/EditProfile.jsx';
 import Upload from './pages/Upload/Upload.jsx';
 import UserSession from './pages/UserSession/UserSession.jsx';
 import Chatbot from './pages/Chatbot/Chatbot.jsx';
+import WafTest from './pages/WafTest/WafTest.jsx';
 import PrivacyPolicy from './pages/TermsAndPolicies/PrivacyPolicy.jsx'
 import TermsOfService from './pages/TermsAndPolicies/TermsOfService.jsx'
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/terms_of_service" element={<TermsOfService />} />
             <Route path="/chatbot" element={<Chatbot />} />
             <Route path="/register-success" element={<RegisterSuccess />} />
+            <Route path="/waf-test" element={<WafTest />} />
           </Routes>
         </div>
 

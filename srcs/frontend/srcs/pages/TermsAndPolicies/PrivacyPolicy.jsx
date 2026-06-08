@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { Header, Footer } from '../../Components/Components_of_site.jsx'
 
 function PrivacyPolicy () {
 
