@@ -12,18 +12,17 @@ services:
       - ./frontend/srcs:/app/src:Z
     env_file:
       - ../.env
-    # logging:
-    #   driver: gelf
-    #   options:
-    #     gelf-address: "udp://127.0.0.1:12201"
-    #     tag: "fiscolia-frontend"
-    #     mode: non-blocking
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
+        tag: "fiscolia-frontend"
+        mode: non-blocking
     depends_on:
       logstash:
         condition: service_healthy
 
 
-# TODO: PASSER NGINX EN SLIM
   proxy:
     container_name: ${PROJECT_NAME}-proxy
     image: proxy-image
@@ -34,12 +33,12 @@ services:
       - fiscolia
     env_file:
       - ../.env
-    # logging:
-    #   driver: gelf
-    #   options:
-    #     gelf-address: "udp://127.0.0.1:12201"
-    #     tag: "fiscolia-proxy"
-    #     mode: non-blocking
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
+        tag: "fiscolia-proxy"
+        mode: non-blocking
     depends_on:
       frontend:
         condition: service_started
@@ -83,12 +82,12 @@ services:
       - ../.env
     secrets:
       - db_auth_pwd
-    # logging:
-    #   driver: gelf
-    #   options:
-    #     gelf-address: "udp://127.0.0.1:12201"
-    #     tag: "fiscolia-backend-auth"
-    #     mode: non-blocking
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
+        tag: "fiscolia-backend-auth"
+        mode: non-blocking
     depends_on:
       db-auth:
         condition: service_healthy
@@ -119,12 +118,12 @@ services:
     secrets:
       - db_auth_pwd
       - db_root_pwd
-    # logging:
-    #   driver: gelf
-    #   options:
-    #     gelf-address: "udp://127.0.0.1:12201"
-    #     tag: "fiscolia-db-auth"
-    #     mode: non-blocking
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
+        tag: "fiscolia-db-auth"
+        mode: non-blocking
     depends_on:
       logstash:
         condition: service_healthy
@@ -221,6 +220,8 @@ services:
       retries: 10
       start_period: 40s
       interval: 5s
+    volumes:
+      - ../logs_archives:/usr/share/logstash/backups:Z
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -241,9 +242,8 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
-    # volumes:
-    #   - ../logs/elasticsearch_data:/usr/share/elasticsearch/data:Z
-
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data:Z
 
   kibana:
     container_name: ${PROJECT_NAME}-kibana
@@ -259,12 +259,12 @@ services:
       - 5601
     networks:
       - fiscolia
-    # logging:
-    #   driver: gelf
-    #   options:
-    #     gelf-address: "udp://127.0.0.1:12201"
-    #     tag: "fiscolia-kibana"
-    #     mode: non-blocking
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
+        tag: "fiscolia-kibana"
+        mode: non-blocking
     depends_on:
       logstash:
         condition: service_healthy 
@@ -280,6 +280,8 @@ volumes:
   db_auth:
     driver: local
   ollama_models:
+    driver: local
+  elasticsearch_data:
     driver: local
 
 secrets:
