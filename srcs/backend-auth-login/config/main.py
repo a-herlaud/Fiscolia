@@ -98,6 +98,8 @@ def logout(response: Response, session_id: Optional[str] = Cookie(None), db: Ses
     if session_id:
         delete_session(db, session_id)
     response.delete_cookie("session_id")
+    response.delete_cookie("my_profile")
+    response.delete_cookie("profiles_infos")    
     return {"message": "Logged out"}
 
 
@@ -139,18 +141,33 @@ def edit_profile(data: UserData, response: Response, current_user: Optional[User
     profile_info = predict_profile(user_data)
     if session_id:
         response.set_cookie(key="my_profile", value=profile_info, httponly=True, samesite="lax", max_age=7 * 24 * 3600)
-    new_data = UserDataDB(
-        etat_civil=data.etat_civil,
-        quotient_familial=data.quotient_familial,
-        situation_specifique=data.situation_specifique,
-        rni=data.rni,
-        csp=data.csp,
-        user_id=current_user.id if current_user else None,
-        profile = profile_info
-    )
-    db.add(new_data)
-    db.commit()
-    db.refresh(new_data)
+    if current_user:
+        existing_data = db.query(UserDataDB).filter(UserDataDB.user_id == current_user.id).first()
+    else:
+        existing_data = None
+
+    if existing_data:
+        existing_data.etat_civil = data.etat_civil
+        existing_data.quotient_familial = data.quotient_familial
+        existing_data.situation_specifique = data.situation_specifique
+        existing_data.rni = data.rni
+        existing_data.csp = data.csp
+        existing_data.profile = profile_info
+        db.commit()
+        db.refresh(existing_data)
+    else:
+        new_data = UserDataDB(
+            etat_civil=data.etat_civil,
+            quotient_familial=data.quotient_familial,
+            situation_specifique=data.situation_specifique,
+            rni=data.rni,
+            csp=data.csp,
+            user_id=current_user.id if current_user else None,
+            profile=profile_info
+        )
+        db.add(new_data)
+        db.commit()
+        db.refresh(new_data)
     return {"message": "Thank you, your data has been used for ML"}
 
 @auth.get("/api/get-profile")

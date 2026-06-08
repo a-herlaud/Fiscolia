@@ -111,8 +111,8 @@ async def lifespan(app: FastAPI):
 auth = FastAPI(lifespan=lifespan)
 
 origins = [
-    "http://localhost:8083",
-    "http://127.0.0.1:8083",
+    "https://localhost",
+    "https://127.0.0.1",
 ]
 
 auth.add_middleware(

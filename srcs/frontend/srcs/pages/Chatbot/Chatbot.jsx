@@ -5,7 +5,7 @@ import '../UserSession/UserSession.css'
 
 export default function Chat() {
   const [messages, setMessages] = useState([
-    { id: 1, text: 'Hello! How can I help you?', sender: 'bot' },
+    { id: 1, text: 'Bonjour je suis Fiscopain, votre assistant personnel... Laissez-moi analyser votre profil !', sender: 'bot' },
   ]);
 
   const [input, setInput] = useState('');
@@ -15,7 +15,7 @@ export default function Chat() {
   let messageCounter = useRef(2);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8083/ws");
+    const socket = new WebSocket("/ws");
     socketRef.current = socket;
 
     socket.onopen = () => {
