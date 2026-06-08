@@ -39,6 +39,17 @@ jobs:
           echo "POSTGRES_PASSWORD_FILE=${{ vars.POSTGRES_PASSWORD_FILE }}" >> .env
           echo "BACK_CHATBOT_PORT=${{ vars.BACK_CHATBOT_PORT }}" >> .env
           echo "OLLAMA_MODELS_PATH=${{ vars.OLLAMA_MODELS_PATH }}" >> .env
+
+          echo "BLOCKING_PARANOIA=${{ vars.BLOCKING_PARANOIA }}" >> .env
+          echo "ANOMALY_INBOUND=${{ vars.ANOMALY_INBOUND }}" >> .env
+          echo "DETECTION_PARANOIA=${{ vars.DETECTION_PARANOIA }}" >> .env
+          echo "MODSEC_RULE_ENGINE=${{ vars.MODSEC_RULE_ENGINE }}" >> .env
+          echo "SSL_PORT=${{ vars.SSL_PORT }}" >> .env
+          echo "MODSEC_ARGUMENTS_LIMIT=${{ vars.MODSEC_ARGUMENTS_LIMIT }}" >> .env
+          echo "MODSEC_REQ_BODY_NOFILES_LIMIT=${{ vars.MODSEC_REQ_BODY_NOFILES_LIMIT }}" >> .env
+          echo "PARANOIA=${{ vars.PARANOIA }}" >> .env
+          echo "MODSEC_REQ_BODY_LIMIT=${{ vars.MODSEC_REQ_BODY_LIMIT }}" >> .env
+
           echo "VERIFICATION .env FILE CONTENT"
           cat .env
           echo "VERIFICATION secrets FILE CONTENT"
