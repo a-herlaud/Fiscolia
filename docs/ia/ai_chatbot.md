@@ -19,7 +19,7 @@ Le backend repose sur deux microservices qui communiquent avec le frontend :
 
 C'est le concept central à comprendre. Un **embedding** est une transformation qui convertit un texte (mot, phrase, paragraphe) en un vecteur de nombres — typiquement des centaines ou milliers de dimensions. Le principe clé : **deux textes sémantiquement proches produiront des vecteurs proches dans cet espace**.En pratique, un vecteur d'embedding ressemble à `[0.12, -0.87, 0.34, 0.05, ...]` avec souvent énormément de dimensions. La "proximité" se mesure par la **similarité cosinus** : deux vecteurs qui pointent dans la même direction sont sémantiquement proches, même si leurs valeurs absolues diffèrent. C'est ce mécanisme que ChromaDB utilise pour retrouver les passages pertinents.
 
-![embeddings](embeddings.jpeg)
+![embeddings](./pictures/embeddings.jpeg)
 
 ---
 
@@ -29,7 +29,7 @@ La phase d'indexation est effectuée une seule fois (ou à chaque ajout de docum
 
 À chaque requête utilisateur, la même transformation est appliquée à la question. ChromaDB compare ce vecteur-requête à tous les vecteurs stockés via `similarity_search`, retourne les K passages les plus proches (les RESULTATS), et Ollama construit une réponse en s'appuyant sur ce contexte documentaire + la question originale.
 
-![embeddings](pipeline.jpeg)
+![embeddings](./pictures/pipeline.jpeg)
 ---
 
 ## Comment fonctionne ChromaDB ?
@@ -37,7 +37,7 @@ La phase d'indexation est effectuée une seule fois (ou à chaque ajout de docum
 ChromaDB est une base de données vectorielle open source, conçue spécifiquement pour stocker et interroger des embeddings efficacement.
 
 Voici ce qui la différencie d'une base relationnelle classique :
-![embeddings](chromadb.jpeg)
+![embeddings](./pictures/chromadb.jpeg)
 
 **Ce que stocke ChromaDB pour chaque chunk :**
 

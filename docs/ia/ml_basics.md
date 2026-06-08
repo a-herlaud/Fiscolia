@@ -15,7 +15,7 @@ Le Deep Learning (DL) est une sous-catégorie du Machine Learning qui utilise de
 
 Le MLP est le modèle de Deep Learning le plus basique et compréhensible :
 
-![mlp](mlp.jpeg)
+![mlp](./pictures/mlp.jpeg)
 
 **Analogie** :
 - Chaque neurone reçoit des signaux (inputs)
@@ -49,7 +49,7 @@ Après la transformation linéaire, on applique une **fonction d'activation** qu
 
 #### 3. **Processus d'un pas d'entraînement**
 
-![training](training.jpeg)
+![training](./pictures/training.jpeg)
 
 Pour chaque batch de données :
 
