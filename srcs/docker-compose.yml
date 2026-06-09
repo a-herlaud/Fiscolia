@@ -95,11 +95,6 @@ services:
         gelf-address: "udp://127.0.0.1:12201"
         tag: "fiscolia-backend-auth"
         mode: non-blocking
-    depends_on:
-      db-auth:
-        condition: service_healthy
-      logstash:
-        condition: service_healthy
 
   db-auth:
     container_name: ${PROJECT_NAME}-db-auth
@@ -314,8 +309,10 @@ services:
         VAULT_PORT: ${VAULT_PORT}
     restart: unless-stopped
     user: "0:0"
-    cap_add:
-      - IPC_LOCK           # Required by Vault to lock memory
+    security_opt:
+      - label:disable
+    # cap_add:
+    #   - IPC_LOCK           # Required by Vault to lock memory
     ports:
       - "${VAULT_PORT}:${VAULT_PORT}"        # Vault UI + API (accessible from host for debugging)
     volumes:
@@ -323,7 +320,7 @@ services:
       - ./vault/scripts:/vault/scripts:ro,Z
       - vault_data:/vault/data:Z # persistent encrypted storage
     healthcheck:
-      test: ["CMD", "sh", "-c", "vault status -format=json >/dev/null 2>&1 && vault status | grep -q 'Sealed.*false' || exit 1"]
+      test: ["CMD", "vault", "status", "-tls-skip-verify"]
       interval: 5s
       timeout: 5s
       retries: 15

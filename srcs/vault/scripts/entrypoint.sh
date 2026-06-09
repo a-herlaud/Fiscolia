@@ -39,27 +39,56 @@ vault login "$ROOT_TOKEN" > /dev/null
 
 SECRETS_EXIST=$(vault kv get secret/database > /dev/null 2>&1 && echo "yes" || echo "no")
 
-if [ "$SECRETS_EXIST" = "no" ]; then
-  echo "==> Enabling KV v2 and writing secrets..."
-  vault secrets enable -path=secret kv-v2
+# if [ "$SECRETS_EXIST" = "no" ]; then
+#   echo "==> Enabling KV v2 and writing secrets..."
+#   vault secrets enable -path=secret kv-v2
 
-  vault kv put secret/general \
-    project_name=${PROJECT_NAME} \
-    db_name=${DB_AUTH_NAME}
+  if [ "$SECRETS_EXIST" = "no" ]; then
+    echo "==> Checking Secrets Engine..."
 
-  vault kv put secret/database \
-    db_user=${DB_AUTH_USER} \
-    db_password=@/run/secrets/db_auth_pwd \
-    db_root_password=@/run/secrets/db_root_pwd
+    if ! vault secrets list | grep -q "^secret/"; then
+      echo "==> Enabling KV v2..."
+      vault secrets enable -path=secret kv-v2
+    fi
 
-  vault kv put secret/ports \
-    db_port=${DB_AUTH_PORT} \
-    backend_port=${BACK_AUTH_PORT}  \
-    front_port=${FRONT_PORT}    \
+    echo "==> Writing secrets..."
+    vault kv put secret/general \
+      project_name="${PROJECT_NAME}" \
+      db_name="${DB_AUTH_NAME}"
+
+    DB_AUTH_PWD_VALUE=$(cat /run/secrets/db_auth_pwd)
+    DB_ROOT_PWD_VALUE=$(cat /run/secrets/db_root_pwd)
+
+    vault kv put secret/database \
+      db_user="${DB_AUTH_USER}" \
+      db_password="${DB_AUTH_PWD_VALUE}" \
+      db_root_password="${DB_ROOT_PWD_VALUE}"
+
+    vault kv put secret/ports \
+      db_port="${DB_AUTH_PORT}" \
+      backend_port="${BACK_AUTH_PORT}" \
+      front_port="${FRONT_PORT}"
+
+    echo "==> Secrets written."
+  fi
+
+  # vault kv put secret/general \
+  #   project_name=${PROJECT_NAME} \
+  #   db_name=${DB_AUTH_NAME}
+
+  # vault kv put secret/database \
+  #   db_user=${DB_AUTH_USER} \
+  #   db_password=@/run/secrets/db_auth_pwd \
+  #   db_root_password=@/run/secrets/db_root_pwd
+
+  # vault kv put secret/ports \
+  #   db_port=${DB_AUTH_PORT} \
+  #   backend_port=${BACK_AUTH_PORT}  \
+  #   front_port=${FRONT_PORT}    \
 
 
-  echo "==> Secrets written."
-fi
+#   echo "==> Secrets written."
+# fi
 
 echo "==> Vault is ready."
 wait $VAULT_PID
