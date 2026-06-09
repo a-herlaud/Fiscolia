@@ -2,6 +2,9 @@
 
 set -e
 
+chmod 700 /vault/data
+chown vault:vault /vault/data
+
 export VAULT_ADDR="${VAULT_ADDR}"
 KEYS_FILE="/vault/data/init-keys.json"
 

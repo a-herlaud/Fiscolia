@@ -83,6 +83,7 @@ services:
         condition: service_healthy
     volumes:
       - vault_data:/vault/data:ro
+      - ../models:/models:ro
     networks:
       - fiscolia
     env_file:

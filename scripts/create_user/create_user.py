@@ -17,16 +17,3 @@ for i in range(1, 11):
     print(f"test{i} registering - Status: {response.status_code} - {response.text}")
 
 
-url = "http://backend-auth:8000/api/auth-login"
-
-for i in range(1, 6):
-    data = {
-        "email": f"test{i}.test@gmail.com",
-        "password": f"Test{i}@1234",
-    }
-
-    response = requests.post(url, json=data, headers={'Content-Type': 'application/json'})
-    print(f"test{i} session - Status: {response.status_code} - {response.text}")
-
-
-
