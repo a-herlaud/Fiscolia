@@ -59,7 +59,7 @@ services:
         BACK_CHATBOT_PORT: ${BACK_CHATBOT_PORT}
     depends_on:
       ollama:
-        condition: service_started
+        condition: service_healthy
     networks:
       - fiscolia
     env_file:
@@ -146,9 +146,9 @@ services:
     build:
       context: ./ollama
     healthcheck:
-      test: ["CMD-SHELL", "ollama list || exit 1"]
-      interval: 5s
-      timeout: 3s
+      test: ["CMD-SHELL", "ollama list | grep -q 'nomic-embed-text' && ollama list | grep -q 'llama3.2:1b' || exit 1"]
+      interval: 10s
+      timeout: 10s
       retries: 10
       start_period: 10s
     networks:

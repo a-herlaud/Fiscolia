@@ -3,3 +3,4 @@ secrets/*.txt
 srcs/backend-chatbot/config/ma_base_chroma
 ./logs_archive
 *.log.gz
+.setup_done
