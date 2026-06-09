@@ -26,9 +26,13 @@ export default function UserSession({ setIsAuthenticated }) {
         method: "GET",
         credentials: "include",
       });
-      if (!response.ok) return;
+      if (!response.ok) {
+        console.log("/api/get-profile failed with status:", response.status);
+        return;
+      }
       const data = await response.json();
-      setFormData({
+      console.log("see response: ", data);
+      setProfileData({
         etat_civil: data.etat_civil || "",
         quotient_familial: data.quotient_familial || "",
         situation_specifique: data.situation_specifique || "",
@@ -137,14 +141,6 @@ export default function UserSession({ setIsAuthenticated }) {
             <div className="key-value">
               <p className="key">Nom:</p>
               <p className="value">{user.lastname}</p>
-            </div>
-            <div className="key-value">
-              <p className="key">Date de naissance:</p>
-              <p className="value">non spécifié</p>
-            </div>
-            <div className="key-value">
-              <p className="key">Lieu de naissance:</p>
-              <p className="value">non spécifié</p>
             </div>
 
               <h2 className="session-h2">La description de l'utilisateur</h2>
