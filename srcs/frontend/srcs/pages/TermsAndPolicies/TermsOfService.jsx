@@ -6,90 +6,226 @@ function TermsOfService () {
     return (
         <div className="start-body-style">
                 <h1>Terms and Conditions for Fiscolia</h1>
-                <p>Terms and Conditions
-                    Last updated: June 02, 2026
-                    Please read these terms and conditions carefully before using Our Service.
+                <p><strong>Last Updated: June 09, 2026</strong></p>
+                <p>Welcome to Fiscolia, an intelligent platform for personal finance management and AI-powered financial insights. These Terms and Conditions ("Terms") are provided by the Fiscolia Team and govern your use of our Service. Please read these terms carefully before using Fiscolia. By accessing or using Fiscolia, you agree to be bound by these Terms.</p>
+
+                <h2>1. Interpretation and Definitions</h2>
+                <p><strong>Capitalized terms</strong> used in these Terms have the meanings defined below. These definitions apply whether such terms appear in singular or plural form.</p>
+
+                <h2>2. Definitions</h2>
+                <p>
+                <strong>Fiscolia Team</strong> (referred to as "the Company", "We", "Us", "Our", or "Fiscolia") refers to the organization providing Fiscolia, a comprehensive financial management platform.<br/>
+                <strong>Country</strong> refers to: France<br/>
+                <strong>Device</strong> means any device that can access the Service such as a computer, cell phone, tablet, or mobile device.<br/>
+                <strong>Service</strong> refers to the Fiscolia platform including our website, web application, chatbot service, user profile management, file upload functionality, and all related services.<br/>
+                <strong>AI Services</strong> refers to our artificial intelligence and machine learning features, including the conversational chatbot (Fiscopain), recommendation engine, and financial analysis tools.<br/>
+                <strong>Personal Data</strong> means information about an identified or identifiable individual, as more fully defined in our Privacy Policy.<br/>
+                <strong>User Account</strong> means a unique account created for you to access the Service or parts of the Service.<br/>
+                <strong>User Content</strong> means any data, documents, files, profiles, or other information you upload, create, or submit through Fiscolia.<br/>
+                <strong>Third-Party Service</strong> means any services provided by third parties that are integrated with or linked to through Fiscolia.<br/>
+                <strong>You</strong> or <strong>Your</strong> means the individual or entity accessing or using Fiscolia, as applicable.
                 </p>
 
-                <h2>Interpretation and Definitions</h2>
-                <p>Interpretation
-                    The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.
+                <h2>3. Acknowledgment and Acceptance</h2>
+                <p>By accessing or using Fiscolia, you acknowledge that:
+                <ul>
+                <li>You have read, understood, and agree to be bound by these Terms and Conditions.</li>
+                <li>You are at least 18 years of age. Fiscolia does not permit those under 18 to use the Service.</li>
+                <li>Your use of Fiscolia is subject to our Privacy Policy, which governs how we collect, use, and protect your personal information.</li>
+                <li>You have the authority to enter into this agreement and comply with all applicable laws and regulations.</li>
+                <li>If you do not agree to these Terms, you may not access or use Fiscolia.</li>
+                </ul>
                 </p>
 
-                <h2>Definitions</h2>
-                <p>For the purposes of these Terms and Conditions:
-                Affiliate means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
-                Country refers to: France
-                Company (referred to as either "the Company", "We", "Us" or "Our" in these Terms and Conditions) refers to Fiscolia.
-                Device means any device that can access the Service such as a computer, a cell phone or a digital tablet.
-                Service refers to the Website.
-                Terms and Conditions (also referred to as "Terms") means these Terms and Conditions, including any documents expressly incorporated by reference, which govern Your access to and use of the Service and form the entire agreement between You and the Company regarding the Service. These Terms and Conditions have been created with the help of the Terms and Conditions Generator.
-                Third-Party Social Media Service means any services or content (including data, information, products or services) provided by a third party that is displayed, included, made available, or linked to through the Service.
-                Website refers to Fiscolia, accessible from https://localhost:8083/
-                You means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
+                <h2>4. User Account and Responsibilities</h2>
+                <p>When you create a User Account on Fiscolia, you are responsible for:
+                <ul>
+                <li>Providing accurate, current, and complete information during registration.</li>
+                <li>Maintaining the confidentiality of your login credentials and password.</li>
+                <li>Notifying us immediately of any unauthorized access or security breach.</li>
+                <li>All activities conducted through your account, whether authorized or unauthorized.</li>
+                <li>Ensuring your profile information (civil status, family situation, specific situation, RNI, CSP) is truthful and kept up-to-date for accurate financial insights.</li>
+                <li>Complying with all applicable laws and these Terms while using Fiscolia.</li>
+                </ul>
                 </p>
 
-                <h2>Acknowledgment</h2>
-                <p>These are the Terms and Conditions governing the use of this Service and the agreement between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.
-                    Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.
-                    By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.
-                    You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.
-                    Your access to and use of the Service is also subject to Our Privacy Policy, which describes how We collect, use, and disclose personal information. Please read Our Privacy Policy carefully before using Our Service.
-                    Links to Other Websites
-                    Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.
-                    The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such websites or services.
-                    We strongly advise You to read the terms and conditions and privacy policies of any third-party websites or services that You visit.
-                    Links from a Third-Party Social Media Service
-                    The Service may display, include, make available, or link to content or services provided by a Third-Party Social Media Service. A Third-Party Social Media Service is not owned or controlled by the Company, and the Company does not endorse or assume responsibility for any Third-Party Social Media Service.
-                    You acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with Your access to or use of any Third-Party Social Media Service, including any content, goods, or services made available through them. Your use of any Third-Party Social Media Service is governed by that Third-Party Social Media Service's terms and privacy policies.
-                </p>
-
-                <h2>Termination</h2>
-                <p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions.
-                Upon termination, Your right to use the Service will cease immediately.
-                </p>
-
-                <h2>Limitation of Liability</h2>
-                <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service.
-                    To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of these Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.
-                    Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law.
-                </p>
-
-
-                <h2>"AS IS" and "AS AVAILABLE" Disclaimer</h2>
-                <p>The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected.
-                    Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.
-                    Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.
-                    Governing Law
-                    The laws of the Country, excluding its conflicts of law rules, shall govern these Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.
-                    Disputes Resolution
-                    If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.
-                </p>
+                <h2>5. User Content and Intellectual Property</h2>
+                <p><strong>Your Rights:</strong> You retain all rights to any User Content you upload or create on Fiscolia.
                 
+                <strong>License to Fiscolia Team:</strong> By uploading or submitting User Content, you grant the Fiscolia Team a worldwide, non-exclusive, royalty-free license to:
+                <ul>
+                <li>Store, process, and analyze your content to provide AI-powered insights and recommendations.</li>
+                <li>Use your data for machine learning model training and improvement of our financial analysis tools.</li>
+                <li>Display aggregated, anonymized insights based on your data for analytical purposes.</li>
+                <li>Maintain backups of your content for security and recovery purposes.</li>
+                </ul>
+
+                <strong>Restrictions:</strong> You may not upload content that:
+                <ul>
+                <li>Violates intellectual property rights or privacy of others.</li>
+                <li>Contains malware, viruses, or harmful code.</li>
+                <li>Is illegal, fraudulent, or used for unauthorized purposes.</li>
+                <li>Infringes on third-party rights.</li>
+                </ul>
+                </p>
+
+                <h2>6. AI Services and Chatbot (Fiscopain)</h2>
+                <p>Fiscolia provides AI-powered services including our intelligent chatbot assistant "Fiscopain" for financial guidance and support.
                 
-                <h2>For European Union (EU) Users</h2>
-                <p>If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which You are resident.
-                    United States Legal Compliance
-                    You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a "terrorist supporting" country, and (ii) You are not listed on any United States government list of prohibited or restricted parties.
-                    Severability and Waiver
-                    Severability
-                    If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.
-                    Waiver
-                    Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach.
+                <strong>Disclaimer:</strong> The Fiscolia Team does not provide professional financial, legal, or tax advice. Our AI services are tools designed to provide general financial insights and recommendations based on the information you provide. You should:
+                <ul>
+                <li>Verify all recommendations with professional advisors before making financial decisions.</li>
+                <li>Understand that AI-generated insights are based on patterns and may contain errors or inaccuracies.</li>
+                <li>Not rely solely on our chatbot for critical financial decisions.</li>
+                <li>Consult with qualified professionals (accountants, financial advisors, lawyers) for complex financial matters.</li>
+                </ul>
 
-                    Translation Interpretation
-                    These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute.
+                <strong>Service Availability:</strong> While we strive to maintain 24/7 availability, the Fiscolia Team does not guarantee uninterrupted service. AI models may require periodic updates or maintenance that could temporarily affect chatbot functionality.
                 </p>
 
-                <h2>Changes to These Terms and Conditions</h2>
-                <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.
-                    By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the Service.
+                <h2>7. File Upload and Data Security</h2>
+                <p>Fiscolia provides functionality for uploading financial documents and personal information.
+                
+                <strong>Your Responsibilities:</strong>
+                <ul>
+                <li>Ensure you have the right to upload all content.</li>
+                <li>Do not upload sensitive government IDs, passwords, or security codes.</li>
+                <li>Understand that uploads are subject to size limitations and format restrictions.</li>
+                <li>Keep backups of critical documents outside of Fiscolia.</li>
+                </ul>
+
+                <strong>Fiscolia Team Responsibilities:</strong> We implement security measures including encryption, ModSecurity protections, and secure authentication (Vault integration) to protect your data. However, no security system is 100% secure, and we cannot guarantee absolute protection against all threats.
                 </p>
 
-                <h2>Contact Us</h2>
-                <p>If you have any questions about these Terms and Conditions, You can contact us:
-                    By visiting this page on our website: https://localhost:8083/terms_of_service
-                    Generated using TermsFeed Privacy Policy Generator
+                <h2>8. Prohibited Conduct</h2>
+                <p>You agree not to:
+                <ul>
+                <li>Attempt to gain unauthorized access to Fiscolia systems or other users' accounts.</li>
+                <li>Transmit malware, viruses, or any harmful code.</li>
+                <li>Engage in fraud, deception, or misrepresentation.</li>
+                <li>Harassment, abuse, or threatening behavior toward other users or the Fiscolia Team.</li>
+                <li>Violate intellectual property, privacy, or other legal rights.</li>
+                <li>Reverse engineer, decompile, or attempt to derive source code or proprietary methods.</li>
+                <li>Perform security testing without explicit written permission from the Fiscolia Team.</li>
+                <li>Use automated tools (bots, scrapers) without authorization to access Fiscolia.</li>
+                <li>Sell, transfer, or resell access to Fiscolia services.</li>
+                <li>Violate applicable laws or regulations in your jurisdiction or elsewhere.</li>
+                </ul>
+                </p>
+
+                <h2>9. Modification and Termination</h2>
+                <p><strong>Service Modifications:</strong> The Fiscolia Team reserves the right to modify, suspend, or discontinue Fiscolia (or any part thereof) at any time with or without notice.
+
+                <strong>Account Termination:</strong> The Fiscolia Team may terminate or suspend your account immediately, without prior notice, for:
+                <ul>
+                <li>Violation of these Terms or any applicable laws.</li>
+                <li>Unauthorized access or security breach attempts.</li>
+                <li>Fraudulent or abusive behavior.</li>
+                <li>Non-payment of any applicable fees.</li>
+                <li>Prolonged inactivity as determined by the Fiscolia Team.</li>
+                </ul>
+
+                Upon termination, your right to use Fiscolia will cease immediately. You remain responsible for any outstanding obligations.
+                </p>
+
+                <h2>10. Data Deletion and Privacy</h2>
+                <p>You have the right to request deletion of your User Account and associated data. Upon deletion:
+                <ul>
+                <li>Your personal information will be removed from active systems within 30 days.</li>
+                <li>Backup and archived data may remain for up to 24 months for security, legal, and recovery purposes.</li>
+                <li>Anonymized data used for model training may be retained indefinitely.</li>
+                <li>You should maintain personal backups of any data you wish to preserve.</li>
+                </ul>
+
+                Please refer to our Privacy Policy for complete information about data retention, deletion, and your rights.
+                </p>
+
+                <h2>11. Third-Party Links and Services</h2>
+                <p>Fiscolia may contain links to third-party websites or services for additional financial data, market information, or banking integrations. The Fiscolia Team:
+                <ul>
+                <li>Does not endorse or assume responsibility for third-party content, privacy policies, or practices.</li>
+                <li>Is not liable for any damage or loss caused by your access to third-party services.</li>
+                <li>Recommends reviewing third-party privacy policies before sharing information with them.</li>
+                </ul>
+
+                Your use of third-party services is governed by their terms and policies, not by these Terms.
+                </p>
+
+                <h2>12. Limitation of Liability</h2>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW:
+                <ul>
+                <li>The Fiscolia Team shall not be liable for any special, incidental, indirect, consequential, or punitive damages, including but not limited to loss of profits, data loss, business interruption, or personal injury, arising from your use of or inability to use Fiscolia.</li>
+                <li>The total liability of the Fiscolia Team shall not exceed the amount you have actually paid to us in the past 12 months, or €100 if you have not made any payments.</li>
+                <li>Some jurisdictions do not allow the exclusion of certain types of liability, so the above limitation may not fully apply to you.</li>
+                </ul>
+                </p>
+
+                <h2>13. "AS IS" and "AS AVAILABLE" Disclaimer</h2>
+                <p>Fiscolia is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind. The Fiscolia Team:
+                <ul>
+                <li>Makes no representations that Fiscolia is error-free, uninterrupted, or meets your specific requirements.</li>
+                <li>Does not warrant the accuracy, reliability, or currency of financial data or AI-generated insights.</li>
+                <li>Disclaims all implied warranties including merchantability, fitness for a particular purpose, and non-infringement.</li>
+                <li>Does not guarantee that the Fiscolia platform, servers, or data are free from viruses, malware, or harmful components.</li>
+                <li>Is not responsible for loss of data, unauthorized access, or service interruptions beyond our reasonable control.</li>
+                </ul>
+
+                Use of Fiscolia is at your own risk.
+                </p>
+
+                <h2>14. Governing Law and Dispute Resolution</h2>
+                <p><strong>Governing Law:</strong> These Terms are governed by the laws of France, without regard to conflicts of law principles.
+
+                <strong>Dispute Resolution:</strong> If you have any concerns or disputes regarding Fiscolia:
+                <ul>
+                <li>First, contact the Fiscolia Team through our support channels to attempt informal resolution.</li>
+                <li>If the dispute cannot be resolved informally, you agree to submit to the exclusive jurisdiction of French courts.</li>
+                <li>You waive any objection to venue and inconvenient forum.</li>
+                </ul>
+                </p>
+
+                <h2>15. Regulatory Compliance</h2>
+                <p><strong>EU Compliance:</strong> If you are a European Union resident, you benefit from mandatory consumer protections under EU law. The Fiscolia Team complies with GDPR and other EU data protection regulations.
+
+                <strong>GDPR Rights:</strong> You have the right to access, correct, delete, or request portability of your personal data as outlined in our Privacy Policy.
+
+                <strong>Security and Data Protection:</strong> The Fiscolia Team implements security measures including:
+                <ul>
+                <li>Encrypted data transmission and storage.</li>
+                <li>ModSecurity Web Application Firewall protection.</li>
+                <li>Hashicorp Vault for secure credential management.</li>
+                <li>Regular security monitoring through Elasticsearch and Kibana logging.</li>
+                <li>Authentication security protocols.</li>
+                </ul>
+                </p>
+
+                <h2>16. Severability</h2>
+                <p>If any provision of these Terms is found to be unenforceable or invalid, such provision will be modified to the minimum extent necessary to make it enforceable, and the remaining provisions will continue in full force and effect.</p>
+
+                <h2>17. Waiver</h2>
+                <p>The failure of the Fiscolia Team to enforce any provision of these Terms does not constitute a waiver of such provision or the right to enforce it at any time in the future. Any waiver must be in writing and signed by an authorized representative of the Fiscolia Team.</p>
+
+                <h2>18. Entire Agreement</h2>
+                <p>These Terms, together with our Privacy Policy and any other policies referenced herein, constitute the entire agreement between you and the Fiscolia Team regarding your use of Fiscolia and supersede all prior agreements and understandings.</p>
+
+                <h2>19. Changes to These Terms</h2>
+                <p>The Fiscolia Team reserves the right to modify these Terms at any time. We will notify you of material changes by:
+                <ul>
+                <li>Posting the updated Terms on this page with a new "Last Updated" date.</li>
+                <li>Sending you an email notification (if you have provided an email address).</li>
+                <li>Displaying a prominent notice on the Fiscolia platform.</li>
+                </ul>
+
+                Your continued use of Fiscolia after changes become effective constitutes your acceptance of the updated Terms. If you do not agree to the new terms, please stop using Fiscolia.
+                </p>
+
+                <h2>20. Contact Us</h2>
+                <p>If you have any questions about these Terms and Conditions, please contact the Fiscolia Team:
+                <ul>
+                <li><strong>Website:</strong> https://localhost:8083/</li>
+                <li><strong>Support Pages:</strong> Available through the Fiscolia platform</li>
+                <li><strong>Jurisdiction:</strong> France</li>
+                </ul>
                 </p>
         </div>
     )
