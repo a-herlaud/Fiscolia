@@ -20,7 +20,13 @@ function Login({ setIsAuthenticated }) {
         credentials: "include",
       });
 
-      if (res.ok) {
+      if (!res.ok) {
+        return;
+      }
+
+      const data = await res.json();
+
+      if (data && data.authenticated) {
         navigate("/session");
       } 
   };

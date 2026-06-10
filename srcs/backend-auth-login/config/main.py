@@ -64,6 +64,15 @@ def get_current_user(session_id: Optional[str] = Cookie(None), db: Session = Dep
     return user
 
 
+def get_current_user_safe(session_id: Optional[str] = Cookie(None), db: Session = Depends(get_db)):
+    if not session_id:
+        return None
+    session = get_session(db, session_id)
+    if not session:
+        return None
+    return db.query(UserDB).filter(UserDB.id == session.user_id).first()
+
+
 @auth.post("/api/auth-login")
 def login(data: UserLogin, response: Response, db: Session = Depends(get_db), session_id: Optional[str] = Cookie(None)):
     user = db.query(UserDB).filter(UserDB.email == data.email).first()
@@ -104,18 +113,26 @@ def logout(response: Response, session_id: Optional[str] = Cookie(None), db: Ses
 
 
 @auth.get("/api/me")
-def get_me(current_user: UserDB = Depends(get_current_user), response: Response = None):
+def get_me(current_user: Optional[UserDB] = Depends(get_current_user_safe), response: Response = None):
     """Get current authenticated user info"""
     # Disable cache for this endpoint
     if response:
         response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
         response.headers["Pragma"] = "no-cache"
         response.headers["Expires"] = "0"
+    if not current_user:
+        return {
+            "authenticated": False,
+            "user": None,
+        }
     return {
-        "id": current_user.id,
-        "email": current_user.email,
-        "firstname": current_user.firstname,
-        "lastname": current_user.lastname,
+        "authenticated": True,
+        "user": {
+            "id": current_user.id,
+            "email": current_user.email,
+            "firstname": current_user.firstname,
+            "lastname": current_user.lastname,
+        },
     }
 
 

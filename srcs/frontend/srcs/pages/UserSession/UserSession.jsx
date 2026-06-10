@@ -62,7 +62,6 @@ export default function UserSession({ setIsAuthenticated }) {
 
         console.log("GET /api/me status:", response.status);
 
-        // Handle 304 Not Modified or other non-200/non-401 responses
         if (response.status === 304) {
           // 304 means cached, try again without cache
           console.log("Got 304, retrying without cache...");
@@ -90,12 +89,16 @@ export default function UserSession({ setIsAuthenticated }) {
           return;
         }
 
-        const responseText = await response.text();
-        console.log("Response text:", responseText);
-        
-        const userData = JSON.parse(responseText);
+        const userData = await response.json();
         console.log("Parsed user data:", userData);
-        setUser(userData);
+
+        if (!userData.authenticated) {
+          setLoading(false);
+          navigate("/login");
+          return;
+        }
+
+        setUser(userData.user);
         setLoading(false);
       } catch (err) {
         console.error("Error fetching user:", err);

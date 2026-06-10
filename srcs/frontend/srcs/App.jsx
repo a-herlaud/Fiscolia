@@ -25,16 +25,15 @@ function App() {
         credentials: "include"
     })
     .then(res => {
-        if (!res.ok) {
-            // Sécurité si le serveur crash (500)
-            return null;
+      if (!res.ok) {
+        return null;
         }
         return res.json();
     })
     .then(data => {
-        if (data && data.authenticated) {
+      if (data && data.authenticated) {
             setIsAuthenticated(true);
-            setUser(data.user);
+        setUser(data.user);
         } else {
             setIsAuthenticated(false);
             setUser(null);
