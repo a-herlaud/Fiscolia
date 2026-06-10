@@ -17,16 +17,30 @@ import PrivacyPolicy from './pages/TermsAndPolicies/PrivacyPolicy.jsx'
 import TermsOfService from './pages/TermsAndPolicies/TermsOfService.jsx'
 
 function App() {
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
     fetch("/api/me", {
         credentials: "include"
     })
     .then(res => {
-        if (res.ok) {
-            setIsAuthenticated(true);
+        if (!res.ok) {
+            // Sécurité si le serveur crash (500)
+            return null;
         }
+        return res.json();
+    })
+    .then(data => {
+        if (data && data.authenticated) {
+            setIsAuthenticated(true);
+            setUser(data.user);
+        } else {
+            setIsAuthenticated(false);
+            setUser(null);
+        }
+    })
+    .catch(() => {
     });
   }, []);
 
