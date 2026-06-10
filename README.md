@@ -96,7 +96,7 @@ Team members listed at the top of the README:
 - `<aherlaud>` - Role: `Project Manager` - Responsibilities: Alexandre was in charge of scheduling meetings, and asked the team to ensure planning and deadlines were respected. He managed the team perfectly even when technical conflicts occured (for example due to hardware constraints). 
 - `<ldevigne>` - Role: `Product Owner` - Responsibilities: Lucas main focus was to design features (mostly around ML and AI) and check with others if it was possible (or how to adapt the idea to the faisability of the project).
 - `<lflayeux>` - Role: `Architect` - Responsibilities: Lorenzo was in charge of leading the core frame of the project, to implement tests (CI/CD), to make sure that logs were properly retrieved and overall that the project was runable.
-- `<yukravch>` - Role: `Product Owner` - Responsibilities: Yulia had to implement major security features along with her interest for the product vision oriented fronted, leading to get a huge responsability for the website overall design. 
+- `<yukravch>` - Role: `Product Owner` - Responsibilities: Yuliia had to implement major security features along with her interest for the product vision oriented fronted, leading to get a huge responsability for the website overall design. 
 
 ## Project Management
 
@@ -232,7 +232,7 @@ erDiagram
 ### Feature ownership
 
 As we explained previously, features around AI/ML were mainly initiated by Lucas but also Alexandre (because these two have a lot of interest for this topic).
-Yulia featured almost all the frontend by herself, but also Cybersecurity module.
+Yuliia featured almost all the frontend by herself, but also Cybersecurity module.
 Lorenzo was in charge of Docker, and all the logs (shoutout to him) : basically he managed all the DevOps tasks.
 
 Let's dig deeper and be more specific :
@@ -255,7 +255,7 @@ Let's dig deeper and be more specific :
 
 ### Chosen modules
 
-- Web (Backend : all team | Frontend : Yulia)
+- Web (Backend : all team | Frontend : Yuliia)
 	- Major: Use a framework for both the frontend and backend. (2 points) <-> React frontend | FastAPI backend
 	- Major: Implement real-time features using WebSockets or similar technology. (2 points) <-> our chatbot uses WebSocket
 	- Minor: Use an ORM for the database. (1 point) <-> SqlAlchemy used for this
@@ -270,7 +270,7 @@ Let's dig deeper and be more specific :
 
 > We first chose to user mistral:latest LLM model : even if the model went smooth on our personnal computers, it was too needy at school, even more with all the other services that had to run together. We faced a hard constraint then and moved to llama3.2:1b which of course is not very 'smart' but works and demonstrate how this project works. We are aware that the answers given by the LLM are often inacurrate but it's mainly due to this hardware limitation rather than a misconception in the code.
 
-- Cybersecurity (Yulia)
+- Cybersecurity (Yuliia)
 	- Major: Implement WAF/ModSecurity (hardened) + HashiCorp Vault for secrets (2 points)
 
 - Devops (Lorenzo)
