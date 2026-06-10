@@ -94,7 +94,6 @@ vector_db:
 	docker run --name vector-db-container --network fiscolia-network -v $(RAG_DATABASE_PATH):/app/ma_base_chroma:Z vector-db
 	docker stop vector-db-container
 	docker rm vector-db-container
-	docker compose -p $(PROJECT_NAME) --env-file .env -f srcs/docker-compose.yml down ollama
 
 create_profiles:
 	@echo -e "$(PURPLE)========================================$(RESET)"
